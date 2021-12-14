@@ -23,7 +23,8 @@ public class Project {
 		
 		System.out.println(str2);
 		
-		System.out.println("테스트입니다.현주아");
+		System.out.println("테스트입니다jju");
+		System.out.println("출력");
 		
 		
 	
