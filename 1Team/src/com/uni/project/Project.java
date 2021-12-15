@@ -23,7 +23,8 @@ public class Project {
 		
 		System.out.println(str2);
 		
-		System.out.println("테스트 토큰저장");
+		System.out.println("테스트입니다");
+		System.out.println("12.15");
 		
 	
 }
