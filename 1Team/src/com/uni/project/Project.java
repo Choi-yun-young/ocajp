@@ -24,7 +24,7 @@ public class Project {
 		System.out.println(str2);
 		
 		System.out.println("마스터가아닌경우");
-		
+		System.out.println("3시41분");
 	
 }
 }
