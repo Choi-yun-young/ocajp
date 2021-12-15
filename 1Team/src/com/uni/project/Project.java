@@ -25,6 +25,7 @@ public class Project {
 		
 		System.out.println("마스터가아닌경우");
 		System.out.println("3시41분");
+		System.out.println("아이우에오");
 	
 }
 }
