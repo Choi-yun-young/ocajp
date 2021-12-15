@@ -25,6 +25,8 @@ public class Project {
 		
 
 		System.out.println("테스트");
+		
+		System.out.println("박주연");
 
 }
 }
