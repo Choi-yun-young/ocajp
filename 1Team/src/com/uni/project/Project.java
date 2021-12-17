@@ -19,6 +19,8 @@ public class Project {
 		System.out.println("테스트");
 		
 		System.out.println("Hello");
+		
+		System.out.println("이윤영 테스트");
 
 	}
 }
