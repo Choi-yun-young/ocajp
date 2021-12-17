@@ -26,6 +26,8 @@ public class Project {
 		System.out.println("테스트입니다");
 		System.out.println("12.15");
 		
+		System.out.println("안녕하세요");
+		
 	
 }
 }
