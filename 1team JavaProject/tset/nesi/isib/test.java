@@ -14,6 +14,6 @@ public class test {
 		
 		System.out.println("김태연 테스트");
 		
-		System.out.println("김태연 테스트2");
+		System.out.println("제가 한번 해보겠습니다");
 	}
 }
