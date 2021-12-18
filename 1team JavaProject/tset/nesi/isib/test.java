@@ -13,7 +13,10 @@ public class test {
 		
 		
 		System.out.println("김태연 테스트");
+		System.out.println("다시 연결해서 테스트 해보았습니다.");
+
+		System.out.println("테스트 해보았습니다.2");
 		
-		System.out.println("제가 한번 해보겠습니다");
+		System.out.println("박주연 테스트");
 	}
 }
