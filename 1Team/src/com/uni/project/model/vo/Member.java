@@ -1,5 +1,7 @@
 package com.uni.project.model.vo;
 
+import java.util.Date;
+
 public class Member {
 	
 	//기존고객, 신규고객의 정보
@@ -9,12 +11,13 @@ public class Member {
 	private String password;
 	private String password1;
 	private int phoneNum;
+	private  Date RegDate;
 	
 	public Member() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Member(String name, String id, String password, String password1, int phoneNum) {
+	public Member(String name, String id, String password, String password1, int phoneNum,Date update) {
 		super();
 		this.name = name;
 		Id = id;
@@ -23,6 +26,7 @@ public class Member {
 		this.phoneNum = phoneNum;
 	}
 
+	
 	public String getName() {
 		return name;
 	}
@@ -62,12 +66,23 @@ public class Member {
 	public void setPhoneNum(int phoneNum) {
 		this.phoneNum = phoneNum;
 	}
+	
+
+	public Date getRegDate() {
+		return RegDate;
+	}
+
+	public void setRegDate(Date regDate) {
+		RegDate = regDate;
+	}
 
 	@Override
 	public String toString() {
 		return "Member [name=" + name + ", Id=" + Id + ", password=" + password + ", password1=" + password1
-				+ ", phoneNum=" + phoneNum + "]";
+				+ ", phoneNum=" + phoneNum + ", RegDate=" + RegDate + "]";
 	}
+
+
 	
 
 }
