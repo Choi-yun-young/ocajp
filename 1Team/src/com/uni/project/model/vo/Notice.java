@@ -1,25 +1,28 @@
 package com.uni.project.model.vo;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Notice {
+public class Notice implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
 	private int index;
 	private String category;
 	private String title;
 	private String Contents;
 	private Date upDate;
-
+	
 	public Notice() {}
 
-	public Notice(String category, String title, String contents, Date upDate) {
+	public Notice(String category, String title, Date upDate,String contents) {
 		this.category = category;
 		this.title = title;
-		this.Contents = contents;
 		this.upDate = upDate;
-	}
+		this.Contents = contents;
 
+	}
+	
 	public int getIndex() {
 		return index;
 	}
@@ -60,15 +63,28 @@ public class Notice {
 	public void setUpDate(Date upDate) {
 		this.upDate = upDate;
 	}
-
+	
 	@Override
-	public String toString() {
+	public String toString() { // 일반조회시
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일");
+
+		return "["+index +". "+ title + "]"+"\n("+ sdf.format(upDate)+")\n";
+	}
+
+	public String toStringSystem() { // 관리자용조회
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일");
+	
+		return "[" + index +". " + title + "]"+"\n(" + sdf.format(getUpDate())+")   [" + category+ "]\n";
+	}
+
+	public String toStringAll() { // 상세조회
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일");
 		
-		return "공지사항 [번호= " + index + " ,제목= " + title + ", 내용= " + Contents + "]"+"\n공지사항등록일= " + sdf.format(getUpDate());
+		return "\n"+title + "\n(" + sdf.format(getUpDate())+")\n" + Contents;
 	}
 	
-	
-	
+
 }
