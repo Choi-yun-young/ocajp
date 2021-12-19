@@ -13,7 +13,7 @@ public class SearchManager {
 	
 	private Scanner sc = new Scanner(System.in);
 	private SearchDao sd = new SearchDao();
-
+ 
 	public SearchManager() {}
 
 	public void newSearch() { // 새로운 서치

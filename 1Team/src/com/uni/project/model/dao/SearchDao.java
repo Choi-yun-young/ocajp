@@ -20,7 +20,7 @@ public class SearchDao {
 	private Set<Search> searchList = new LinkedHashSet<>();
 	private ArrayList<Search> copyCakeList = new ArrayList<>();
 	private ArrayList<Cake> ckList = new ArrayList<>();
-	
+	 
 	private CakeDao cd = new CakeDao();
 
 	public SearchDao() {
