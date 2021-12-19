@@ -62,7 +62,7 @@ public class SearchDao {
 		
 	}
 	
-	public ArrayList<Search> newSearch(String input) {
+	public Search newSearch(String input) {
 	
 		
 		for(int i = 0; i < copyCakeList.size(); i++) {
@@ -70,12 +70,12 @@ public class SearchDao {
 			if(copyCakeList.get(i).getCakeName().contains(input)) { 
 				
 				searchList.add(copyCakeList.get(i)); // 케익을 찾고 검색리스트에 저장해주고
-			
+				return copyCakeList.get(i);
 			}
 			
 		}
 		saveFile();
-		return searchList; // 검색된거 없음
+		return null; // 검색된거 없음
 		
 		
 	}
