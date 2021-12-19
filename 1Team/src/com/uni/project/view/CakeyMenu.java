@@ -4,8 +4,10 @@ import java.util.Scanner;
 
 import com.uni.project.controller.CakeyLogin;
 import com.uni.project.controller.CakeyManager;
+import com.uni.project.controller.CustomerBlackList;
 import com.uni.project.controller.CustomerManagement;
 import com.uni.project.controller.NoticeManager;
+
 
 
 public class CakeyMenu {
@@ -14,6 +16,7 @@ public class CakeyMenu {
 	private CakeyManager cm = new CakeyManager();
 	private CakeyLogin cl = new CakeyLogin();
 	private CustomerManagement cm1 = new CustomerManagement();
+	private CustomerBlackList cb = new CustomerBlackList();
 	
 	
 	public void startMenu() {
@@ -177,7 +180,7 @@ public class CakeyMenu {
 		case 4:
 			break;
 		case 5:
-			//cb.manageBlackList(cm1, select);
+			cb.manageBlackList(cm1, select);
 			break;
 		default:
 			break;
@@ -207,7 +210,7 @@ public class CakeyMenu {
 			
 			switch (menu3) {
 			case 1:
-				//cb.manageBlackList(cm1, select);
+				cb.manageBlackList(cm1, select);
 				break;
 			case 2:
 				NoticeMenu();
