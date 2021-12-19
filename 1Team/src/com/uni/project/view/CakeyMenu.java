@@ -6,6 +6,7 @@ import com.uni.project.controller.CakeyLogin;
 import com.uni.project.controller.CakeyManager;
 import com.uni.project.controller.CustomerBlackList;
 import com.uni.project.controller.CustomerManagement;
+import com.uni.project.controller.ShopManager;
 
 
 
@@ -17,6 +18,7 @@ public class CakeyMenu {
 	private CakeyLogin cl = new CakeyLogin();
 	private CustomerManagement cm1 = new CustomerManagement();
 	private CustomerBlackList cb = new CustomerBlackList();
+	private ShopManager sm = new ShopManager();
 	
 	
 	public void startMenu() {
@@ -94,10 +96,13 @@ public class CakeyMenu {
 				
 				switch (menu1) {
 				case 1:
+					sm.inputCake();
 					break;
 				case 2:
+					sm.cakeAllList();
 					break;
 				case 3:
+					sm.deleteCake();
 					break;
 				case 4:
 					cm.storeNotice(); // 매장용 공지사항조회 추가
