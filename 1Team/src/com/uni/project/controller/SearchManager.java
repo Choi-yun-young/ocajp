@@ -2,14 +2,11 @@ package com.uni.project.controller;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
+import java.util.Iterator;
 import java.util.Scanner;
+import java.util.Set;
 
-import com.uni.project.model.dao.CakeDao;
-import com.uni.project.model.dao.NoticeDao;
 import com.uni.project.model.dao.SearchDao;
-import com.uni.project.model.vo.Cake;
-import com.uni.project.model.vo.Notice;
 import com.uni.project.model.vo.Search;
 
 public class SearchManager {
@@ -27,10 +24,11 @@ public class SearchManager {
 		System.out.println("검색어가 포함된 케이크 검색: ");
 		String input = sc.nextLine();
 		
-		ArrayList<Search> searchList = sd.newSearch(input);
+		Search s = sd.newSearch(input);
 		
-		if(!(searchList.isEmpty())) {
-			System.out.println(searchList.toString());
+		if(s != null) {
+			System.out.println(s.toString());
+			sd.saveFile();
 			
 		} else {
 			System.out.println("검색된 케익이 없습니다");
@@ -40,7 +38,7 @@ public class SearchManager {
 	
 	public void dispalysearchList() { // 검색기록 조회
 		
-		ArrayList<Search> searchList = sd.allsearch();
+		Set<Search> searchList = sd.allsearch(); // 검색기록 중복됐을때 중복된건 안나옴
 		
 		if(searchList.isEmpty()) {
 			System.out.println("검색기록이 없습니다");
@@ -48,8 +46,10 @@ public class SearchManager {
 		}
 		else {
 			
-			for(int i = 0; i < searchList.size(); i++) {
-				System.out.println(searchList.get(i).toString());
+			Iterator<Search> it = searchList.iterator();
+			while (it.hasNext()) {
+				System.out.println((Search) it.next());
+				
 			}
 	
 		}
@@ -71,7 +71,15 @@ public class SearchManager {
 	
 	public void sortsearch() {
 		
-		ArrayList<Search> searchList = sd.allsearch();
+		Set<Search> searchList = sd.allsearch();
+		ArrayList<Search> searchList2 = new ArrayList<Search>();
+		
+		Iterator<Search> it = searchList.iterator();
+		while (it.hasNext()) {
+			searchList2.add((Search) it.next());
+			
+		}
+		
 		
 		System.out.println("검색 기록 정렬하기");
 		System.out.println("1. 검색한 케이크 이름 오름차순");
@@ -82,14 +90,14 @@ public class SearchManager {
 		
 		if(menu == 1) {
 			
-			Collections.sort(searchList, new AscSearchList()); 
-			for(Search b: searchList) {
+			Collections.sort(searchList2, new AscSearchList()); 
+			for(Search b: searchList2) {
 				System.out.println(b.toString()); 
 			}
 		} 
 		else if(menu == 2) {
-			Collections.sort(searchList, new DescSearchList());
-			for(Search b: searchList) {
+			Collections.sort(searchList2, new DescSearchList());
+			for(Search b: searchList2) {
 				System.out.println(b.toString()); 
 			}	
 		}

@@ -8,14 +8,16 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
-import com.uni.project.model.dao.CakeDao;
 import com.uni.project.model.vo.Cake;
 import com.uni.project.model.vo.Search;
 
 public class SearchDao {
 	
-	private ArrayList<Search> searchList = new ArrayList<>();
+	private Set<Search> searchList = new LinkedHashSet<>();
 	private ArrayList<Search> copyCakeList = new ArrayList<>();
 	private ArrayList<Cake> ckList = new ArrayList<>();
 	
@@ -23,8 +25,8 @@ public class SearchDao {
 
 	public SearchDao() {
 
-	      try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("search.txt"))) {
-	    	  	
+	      try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("search_List.txt"))) {
+	    	 
 	    	 while (true) {
 	        	 searchList.add((Search) ois.readObject());
 	         }
@@ -32,7 +34,7 @@ public class SearchDao {
 	      } catch (EOFException e) {
 	
 	      } catch (FileNotFoundException e) {
-	
+	    	  e.printStackTrace();
 	      } catch (IOException e) {
 	         e.printStackTrace();
 	      } catch (ClassNotFoundException e) {
@@ -62,7 +64,7 @@ public class SearchDao {
 		
 	}
 	
-	public ArrayList<Search> newSearch(String input) {
+	public Search newSearch(String input) {
 	
 		
 		for(int i = 0; i < copyCakeList.size(); i++) {
@@ -70,18 +72,17 @@ public class SearchDao {
 			if(copyCakeList.get(i).getCakeName().contains(input)) { 
 				
 				searchList.add(copyCakeList.get(i)); // 케익을 찾고 검색리스트에 저장해주고
-			
+				return copyCakeList.get(i);
 			}
 			
 		}
-		saveFile();
-		return searchList; // 검색된거 없음
+		return null; // 검색된거 없음
 		
 		
 	}
 
 
-	public ArrayList<Search> allsearch() { 
+	public Set<Search> allsearch() { 
 		   
 	     return searchList;
 	     
@@ -100,14 +101,19 @@ public class SearchDao {
 	
 	public void saveFile() {
 	   
-      try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("search.txt"))) {
-    	  
-         for (int i = 0; i < searchList.size(); i++) {
-        	 
-            oos.writeObject(searchList.get(i));
-         }
+      try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("search_List.txt"))) {
+    	 
+    	 ArrayList<Search> out = new ArrayList<>();
+    	 out.addAll(searchList);
+    	 
+    	 for(int i = 0; i < out.size(); i++) { 
+    		 	
+				oos.writeObject(out.get(i));
+    				
+    	  }
+ 
       } catch (FileNotFoundException e) {
-         System.out.println("검색내역이 없습니다");
+    	  e.printStackTrace();
       } catch (IOException e) {
          e.printStackTrace();
       }
