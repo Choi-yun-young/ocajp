@@ -8,11 +8,11 @@ public class Run {
 
 	public static void main(String[] args) {
 
-		//CakeyMenu c = new CakeyMenu();
-		//c.NoticeMenu();
+		CakeyMenu c = new CakeyMenu();
+		c.startMenu();
 		
-		Customer c= new Customer();
-		c.Main();
+		//Customer c= new Customer();
+		//c.Main();
 
 	}
 
