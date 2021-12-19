@@ -13,12 +13,9 @@ public class ShopManager {
 
 	public void inputCake() { // 케이크 등록 선택시
 
-		while (true) {
-			System.out.println("***** 케이크 등록 *****");
-			System.out.println("1. 케이크정보 등록");
-			System.out.println("0. 메인 메뉴로 돌아가기");
-			break;
-		}
+		System.out.println("***** 케이크 등록 *****");
+		System.out.println("1. 케이크정보 등록");
+		System.out.println("0. 메인 메뉴로 돌아가기");
 
 		int num = sc.nextInt();
 		sc.nextLine();
@@ -45,7 +42,6 @@ public class ShopManager {
 						break;
 					}
 				}
-				cd.saveFile();
 
 				// 새 케이크 객체 만들고 CakeDao에 순서대로 전달
 				// 케이크 등록번호, 이름, 가격, 원재료
@@ -62,36 +58,15 @@ public class ShopManager {
 				System.out.println("계속 등록하시겠습니까? (Y/N)");
 				char ch = sc.nextLine().toUpperCase().charAt(0);
 
-				while (true) {
-					if (ch == 'Y') {
-						inputCake();
-						// System.out.println("***** 케이크 등록 *****");
-						// System.out.println("1. 케이크정보 등록");
-						// System.out.println("0. 메인 메뉴로 돌아가기");
-						// 이거 같이 실행되는거 해결하기
-						//
-					} else if (ch == 'N') {
-						System.out.println("메인메뉴로 돌아갑니다.");
-						return;
-					} else {
-						System.out.println("잘못 입력하셨습니다.");
-						return;
-					}
-					break;
+				if (ch == 'Y') {
+					continue;
+				} else {
+					System.out.println("등록 취소, 메인메뉴로 돌아갑니다.");
+					return;
 				}
-				cd.saveFile();
-				return;
+
 			}
-
-		case 0:
-			System.out.println("메인메뉴로 돌아갑니다.");
-			return;
-		default:
-			System.out.println("잘못 입력하셨습니다.");
-			return;
-
 		}
-
 	}
 
 	public void cakeAllList() {

@@ -116,7 +116,7 @@ public class NoticeDao {
 		
 		for(int i = 0; i < nList.size(); i++) {
 
-			if(nList.get(i).getCategory().equals(input)) {
+			if(nList.get(i).getCategory().equals(input) || nList.get(i).getCategory().equals("공통")) {
 				storeList.add(nList.get(i));
 			
 			}
@@ -131,7 +131,7 @@ public class NoticeDao {
 		
 		for(int i = 0; i < nList.size(); i++) {
 
-			if(nList.get(i).getCategory().equals(input)) {
+			if(nList.get(i).getCategory().equals(input) || nList.get(i).getCategory().equals("공통")) {
 				customerList.add(nList.get(i));
 			
 			}
