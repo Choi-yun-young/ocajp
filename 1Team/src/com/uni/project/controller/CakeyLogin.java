@@ -1,11 +1,14 @@
 package com.uni.project.controller;
 
+import java.util.Map;
+
+import com.uni.project.model.dao.CustomerManagement;
 import com.uni.project.model.vo.Member;
 
 public class CakeyLogin {
 	
 	public int login(CustomerManagement cm , String id, String pwd) {
-		for (Member member : cm.list) {
+		for (Member member : cm.MemberMap.values()) {
 			if (member.getId().equals(id) && member.getPassword().equals(pwd)) {
 				return 1;
 			}
