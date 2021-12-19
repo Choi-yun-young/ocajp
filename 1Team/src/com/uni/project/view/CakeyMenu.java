@@ -4,8 +4,10 @@ import java.util.Scanner;
 
 import com.uni.project.controller.CakeyLogin;
 import com.uni.project.controller.CakeyManager;
+import com.uni.project.controller.CustomerBlackList;
 import com.uni.project.controller.CustomerManagement;
-import com.uni.project.controller.NoticeManager;
+
+
 
 
 public class CakeyMenu {
@@ -14,6 +16,7 @@ public class CakeyMenu {
 	private CakeyManager cm = new CakeyManager();
 	private CakeyLogin cl = new CakeyLogin();
 	private CustomerManagement cm1 = new CustomerManagement();
+	private CustomerBlackList cb = new CustomerBlackList();
 	
 	
 	public void startMenu() {
@@ -100,17 +103,16 @@ public class CakeyMenu {
 					cm.storeNotice(); // 매장용 공지사항조회 추가
 					break;
 				case 5:
-					//cb.manageBlackList(cm1, select);
+					cb.manageBlackList(cm1, select);
 					break;
 				case 6:
 					return;
 				default:
 					System.out.println("메뉴를 다시 선택하세요");
 			
-        }
+				}
 				
-		}
-		
+			}
 		
 		
 		} else if(select == 2) {
@@ -155,48 +157,11 @@ public class CakeyMenu {
 				
 				}
 				
-			}
-
-		System.out.println("========== 메인 메뉴 ==========");
-		System.out.println("1. 케이크 등록");
-		System.out.println("2. 케이크 조회");
-		System.out.println("3. 케이크 등록 취소");
-		System.out.println("4. 공지사항 조회");
-		System.out.println("5. 블랙리스트 관리");
-		System.out.println("메뉴 입력: ");
-		int menu1 = sc.nextInt();
-		sc.nextLine();
-		
-		switch (menu1) {
-		case 1:
-			break;
-		case 2:
-			break;
-		case 3:
-			break;
-		case 4:
-			break;
-		case 5:
-			//cb.manageBlackList(cm1, select);
-			break;
-		default:
-			break;
-	}
-		
-		}else if(select == 2) {
-		System.out.println("========== 메인 메뉴 ==========");
-		System.out.println("1. 케이크 주문하기");
-		System.out.println("2. 케이크 주문예약조회");
-		System.out.println("3. 케이크 주문예약취소");
-		System.out.println("4. 공지사항 조회");
-		System.out.println("5. 매장 / 메뉴 검색");
-		System.out.println("6. 회원 정보 조회");
-		System.out.println("메뉴 입력: ");
-		int menu2 = sc.nextInt();
-		sc.nextLine();
-
-		}else if(select == 3) {
 			
+			}
+			
+		} else if(select == 3) {
+
 			System.out.println("========== 메인 메뉴 ==========");
 			System.out.println("1. 블랙리스트 관리");
 			System.out.println("2. 공지사항 관리");
@@ -207,7 +172,7 @@ public class CakeyMenu {
 			
 			switch (menu3) {
 			case 1:
-				//cb.manageBlackList(cm1, select);
+				cb.manageBlackList(cm1, select);
 				break;
 			case 2:
 				NoticeMenu();
@@ -257,7 +222,7 @@ public class CakeyMenu {
 			}
 			
 		}
-
+		
 	}
 
 }
