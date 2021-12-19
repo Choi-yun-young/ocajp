@@ -3,7 +3,7 @@ package com.uni.project.view;
 import java.util.Scanner;
 
 import com.uni.project.controller.CakeyLogin;
-import com.uni.project.controller.cakeyManager;
+import com.uni.project.controller.CakeyManager;
 import com.uni.project.controller.CustomerManagement;
 import com.uni.project.controller.NoticeManager;
 
@@ -11,7 +11,7 @@ import com.uni.project.controller.NoticeManager;
 public class CakeyMenu {
 	
 	private Scanner sc = new Scanner(System.in);
-	private cakeyManager cm = new cakeyManager();
+	private CakeyManager cm = new CakeyManager();
 	private CakeyLogin cl = new CakeyLogin();
 	private CustomerManagement cm1 = new CustomerManagement();
 	
