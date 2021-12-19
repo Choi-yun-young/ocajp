@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.LinkedList;
 import java.util.Scanner;
 
+import com.uni.project.model.dao.CustomerManagement;
 import com.uni.project.model.vo.Member;
 
 public class CustomerBlackList {
@@ -17,6 +18,7 @@ public class CustomerBlackList {
 	        if (mode == 3) {
 	            System.out.println("**블랙리스트 관리** (관리자용)");
 	            System.out.println("1. 블랙리스트 조회");
+	            System.out.println("2. 블랙리스트 등록");
 	            System.out.println("3. 블랙리스트 삭제");
 	        } else {
 	        	
@@ -84,7 +86,7 @@ public class CustomerBlackList {
 	        }
 
 	        Member member = null;
-	        for (Member each : cm.list) {
+	        for (Member each : cm.MemberMap.values()) {
 	            if (each.getId().equals(id)) {
 	                member = each;
 	                
