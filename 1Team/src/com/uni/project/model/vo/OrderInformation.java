@@ -57,6 +57,6 @@ public class OrderInformation {
 
 	@Override
 	public String toString() {
-		return "예약날짜 : " + date + "" + ", 예약매장 : " + sName + "";
+		return "예약 번호 : " + num + ", 예약날짜 : " + date + "" + ", 예약매장 : " + sName + ", 가격 : " + price;
 	}
 }
