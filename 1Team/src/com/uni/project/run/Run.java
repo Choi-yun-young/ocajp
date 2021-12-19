@@ -5,13 +5,11 @@ import com.uni.project.view.Customer;
 public class Run {
 
 	public static void main(String[] args) {
+		// TODO Auto-generated method stub
 
-		//CakeyMenu c = new CakeyMenu();
-		//c.startMenu();
-		Customer c= new Customer();
+		
+		Customer c = new Customer();
 		c.Main();
-		
-		
-	
-}
+	}
+
 }
