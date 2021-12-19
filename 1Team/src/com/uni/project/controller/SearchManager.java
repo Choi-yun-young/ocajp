@@ -27,10 +27,10 @@ public class SearchManager {
 		System.out.println("검색어가 포함된 케이크 검색: ");
 		String input = sc.nextLine();
 		
-		ArrayList<Search> searchList = sd.newSearch(input);
+		Search s = sd.newSearch(input);
 		
-		if(!(searchList.isEmpty())) {
-			System.out.println(searchList.toString());
+		if(s != null) {
+			System.out.println(s.toString());
 			
 		} else {
 			System.out.println("검색된 케익이 없습니다");
