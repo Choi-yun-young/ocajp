@@ -15,12 +15,5 @@ public class Project {
 		String str2 = "abcde";
 
 		System.out.println(str2);
-
-		System.out.println("테스트");
-		
-		System.out.println("Hello");
-		
-		System.out.println("이윤영 테스트");
-
-	}
+}
 }
