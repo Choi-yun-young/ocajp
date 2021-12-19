@@ -1,17 +1,14 @@
 package com.uni.project.view;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
 import com.uni.project.controller.CakeyShopMenuManager;
-import com.uni.project.model.vo.Cake;
 
 public class CakeyShopMenu {
 	
 	private Scanner sc = new Scanner(System.in);
 	private CakeyShopMenuManager cm = new CakeyShopMenuManager();
-	ArrayList<Cake> cList = new ArrayList<>();
 	
 	public void shopIncakeOrder() { // 주문하기 창
 		
@@ -26,8 +23,8 @@ public class CakeyShopMenu {
 		}
 	}
 	
-	public void cakeCheck() { // 예약할 날짜 
-		Date date1 = new Date();
+	public void cakeCheck(int cakePrice) { // 예약할 날짜 
+		Date today = new Date();
 		
 		while(true) {
 			System.out.println("*****예약할 날짜*****");
@@ -43,8 +40,8 @@ public class CakeyShopMenu {
 			int dd = sc.nextInt(); // 일 적기
 			System.out.println();
 			
-			cm.checkDate(yy, mm, dd); //예약할 날짜가 지난 날짜 인지 확인하러가는 메소드
-			
+			cm.checkDate(yy, mm, dd,  cakePrice); //예약할 날짜가 지난 날짜 인지 확인하러가는 메소드
+			cm.orderConfirmation(); // 주문 확인 창
 		}
 	}
 	
@@ -61,14 +58,5 @@ public class CakeyShopMenu {
 		System.out.println("-----취소 가능한 주문-----");
 		
 		cm.orderCancelCheack(); // 캔슬 가능한 정보 받아옴
-	}
-	
-	public void completeDeleteOrder() { // 취소 완료 창
-		//
-		
-		System.out.println("-----취소 완료-----");
-		System.out.println("취소 예약 정보 : " + ", " + ", " + "원"); // ("취소 예약 정보 : " + 날짜 + ", " + 매장명 + ", " + 가격 + "원")
-		System.out.println("메인으로 돌아갑니다.");
-		//메인 메뉴 메소드로
 	}
 }
