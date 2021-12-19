@@ -7,12 +7,12 @@ import java.util.Scanner;
 import com.uni.project.model.dao.NoticeDao;
 import com.uni.project.model.vo.Notice;
 
-public class cakeyManager {
+public class CakeyManager {
 	
 	private NoticeDao nd = new NoticeDao();
 	private Scanner sc = new Scanner(System.in);
 	
-	public cakeyManager() {}
+	public CakeyManager() {}
 	
 	public void newNotice() { // 공지사항 등록
 		
