@@ -65,8 +65,7 @@ public class CakeyManager {
 		ArrayList<Notice> nList = nd.allNotice();
 		
 		if(nList.isEmpty()) {
-			System.out.println("\n등록된 공지사항이 없습니다");
-			System.out.println();
+			System.out.println("\n등록된 공지사항이 없습니다\n");
 			return;
 		}
 		
@@ -110,8 +109,7 @@ public class CakeyManager {
 		ArrayList<Notice> nList = nd.allNotice();
 		
 		if(nList.isEmpty()) {
-			System.out.println("\n등록된 공지사항이 없습니다");
-			System.out.println();
+			System.out.println("\n등록된 공지사항이 없습니다\n");
 			return;
 		}
 		for(Notice n : nList) {
@@ -160,8 +158,7 @@ public class CakeyManager {
 		ArrayList<Notice> nList = nd.allNotice();
 		
 		if(nList.isEmpty()) {
-			System.out.println("등록된 공지사항이 없습니다");
-			System.out.println();
+			System.out.println("\n등록된 공지사항이 없습니다\n");
 			return;
 		}
 		for(Notice n : nList) {
@@ -235,7 +232,7 @@ public class CakeyManager {
 		ArrayList<Notice> selecList = nd.storeNotice(input);
 		
 		if(selecList.isEmpty()) {
-			System.out.println("등록된 공지사항이 없습니다");
+			System.out.println("\n등록된 공지사항이 없습니다\n");
 			System.out.println();
 			return;
 		} else {
@@ -278,7 +275,7 @@ public class CakeyManager {
 		ArrayList<Notice> selecList = nd.customerNotice(input);
 		
 		if(selecList.isEmpty()) {
-			System.out.println("등록된 공지사항이 없습니다");
+			System.out.println("\n등록된 공지사항이 없습니다\n");
 			System.out.println();
 			return;
 		} else {
