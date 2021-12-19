@@ -25,6 +25,14 @@ public class Member implements Comparable<Member>{
 		this.password1 = password1;
 		this.phoneNum = phoneNum;
 	}
+	
+	public Member(String id, String name, int phoneNum) {
+		super();
+		this.Id = id;
+		this.name = name;
+		this.phoneNum = phoneNum;
+	}
+
 
 	
 	public String getName() {
