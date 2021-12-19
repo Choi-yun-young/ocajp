@@ -1,14 +1,16 @@
 package com.uni.project.model.vo;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Search implements Serializable{
 	
+
 	private static final long serialVersionUID = 1L;
 	private String cakeName;
 	private int cakePrice;
 	private String cakeIngred;
-	
+	 
 	public Search() {}
 	
 	public Search(String cakeName, int cakePrice, String cakeIngred) {
@@ -46,6 +48,30 @@ public class Search implements Serializable{
 	@Override
 	public String toString() {
 		return "상품명 : " + cakeName + ", 가격 : " + cakePrice + ", 원재료 : " + cakeIngred;
+	}
+
+	@Override
+	public int hashCode() {
+		// (cakeName, cakePrice, cakeIngred).hashCode();
+		return Objects.hash(cakeName, cakePrice, cakeIngred);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+
+		if(!(obj instanceof Search)) {
+			return false;
+		}
+		
+		Search other = (Search)obj;
+		
+		if(this.cakeName.equals(other.cakeName) && this.cakePrice == other.cakePrice && this.cakeIngred.equals(other.cakeIngred)) {
+			return true;
+		}
+		else {
+			return false;
+		}
+		
 	}
 	
 	
