@@ -6,6 +6,7 @@ import com.uni.project.controller.CakeyLogin;
 import com.uni.project.controller.CakeyManager;
 import com.uni.project.controller.CustomerBlackList;
 import com.uni.project.controller.CustomerManagement;
+import com.uni.project.controller.SearchManager;
 import com.uni.project.controller.ShopManager;
 
 public class CakeyMenu {
@@ -16,6 +17,7 @@ public class CakeyMenu {
 	private CustomerManagement cm1 = new CustomerManagement();
 	private CustomerBlackList cb = new CustomerBlackList();
 	private ShopManager sm = new ShopManager();
+	private SearchManager sm2 = new SearchManager();
 
 	
 	public void startMenu() {
@@ -126,7 +128,7 @@ public class CakeyMenu {
 				System.out.println("2. 케이크 주문예약조회");
 				System.out.println("3. 케이크 주문예약취소");
 				System.out.println("4. 공지사항 조회");
-				System.out.println("5. 매장 / 메뉴 검색");
+				System.out.println("5. 메뉴 검색");
 				System.out.println("6. 회원 정보 조회");
 				System.out.println("7. 돌아가기");
 				System.out.println("메뉴 입력: ");
@@ -147,7 +149,7 @@ public class CakeyMenu {
 					cm.customerNoice(); // 고객용 공지사항 조회 추가
 					break;
 				case 5:
-				
+					NoticeMenu();
 					break;
 				case 6:
 					
@@ -227,6 +229,43 @@ public class CakeyMenu {
 			}
 			
 		}
+		
+	}
+	
+	public void searchMenu() {
+		
+		while (true) {
+			
+			System.out.println("1. 메뉴검색");
+			System.out.println("2. 검색리스트 조회");
+			System.out.println("3. 검색리스트 삭제");
+			System.out.println("4. 검색리스트 정렬");
+			System.out.println("0. 돌아가기");
+			
+			int menu = sc.nextInt();
+			sc.nextLine();
+			
+			switch (menu) {
+			case 1:
+				sm2.newSearch();
+				break;
+			case 2:
+				sm2.dispalysearchList();
+				break;
+			case 3:
+				sm2.deletesearch();
+				break;
+			case 4:
+				sm2.sortsearch();
+				break;
+			case 0:
+				return;
+			default:
+				System.out.println("메뉴를 다시 선택하세요");
+			}
+		}
+		
+	
 		
 	}
 
