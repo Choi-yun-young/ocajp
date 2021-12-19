@@ -11,7 +11,6 @@ public class CustomerManagement {
 	
 	
 
-	private static final Date RegDate = null;
 
 	Scanner sc = new Scanner(System.in);
 	
@@ -39,7 +38,7 @@ public class CustomerManagement {
 		int phoneNum = sc.nextInt();
 		sc.nextLine();
 		
-		list.add(new Member(name,id,password,password1,phoneNum,RegDate));
+		list.add(new Member(name,id,password,password1,phoneNum, null));
 		
 		System.out.println("***********회원가입을 축하합니다.*************");
 		
