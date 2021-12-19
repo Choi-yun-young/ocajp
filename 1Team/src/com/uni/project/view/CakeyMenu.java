@@ -6,7 +6,7 @@ import com.uni.project.controller.CakeyLogin;
 import com.uni.project.controller.CakeyManager;
 import com.uni.project.controller.CustomerBlackList;
 import com.uni.project.controller.CustomerManagement;
-import com.uni.project.controller.NoticeManager;
+
 
 
 
@@ -103,7 +103,7 @@ public class CakeyMenu {
 					cm.storeNotice(); // 매장용 공지사항조회 추가
 					break;
 				case 5:
-					//cb.manageBlackList(cm1, select);
+					cb.manageBlackList(cm1, select);
 					break;
 				case 6:
 					return;
@@ -159,6 +159,7 @@ public class CakeyMenu {
 				}
 				
 			}
+		}else if(select == 3) {
 
 		System.out.println("========== 메인 메뉴 ==========");
 		System.out.println("1. 케이크 등록");
