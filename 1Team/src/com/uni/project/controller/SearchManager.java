@@ -29,6 +29,7 @@ public class SearchManager {
 		if(s != null) {
 			System.out.println(s.toString());
 			sd.saveFile();
+
 			
 		} else {
 			System.out.println("검색된 케익이 없습니다");
