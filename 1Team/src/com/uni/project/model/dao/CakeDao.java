@@ -70,23 +70,27 @@ public class CakeDao {
 				ckList.remove(i);
 			}
 		}
-
+		
+		//케이크 삭제 후에는 아래의 케이크 번호셋팅 메소드를 호출한다.		
 		setCakeNo();
 	}
 
 	public void setCakeNo() {
-
-		// 삭제하고 케이크 번호 앞으로 당겨
-		// 당겨야 되는데... 삭제한 케이크 번호보다 뒷번호인 애들만 당겨야지
-		// 수정 필요
-		for (int i = 0; i < ckList.size(); i++) {
-			int no = ckList.get(i).getCakeNo();
-			no--; // 이걸 다시 세팅해줘야
-			ckList.get(i).setCakeNo(no);
-			if (no == 0)
-				no++;
+		//케이크 삭제 후 번호를 재설정하는 메소드
+		
+		// 0번 인덱스의 케이크 번호는 무조건 1번으로	
+		ckList.get(0).setCakeNo(1);
+		
+		//변수 no를 만들고 1로 초기화
+		int no = 1;
+		
+		//1번 인덱스부터는 위에서 1로 초기화한 no변수가 ++되면서 케이크의 번호가 셋팅
+		for(int i = 1; i < ckList.size(); i++) {
+			no++;
 			ckList.get(i).setCakeNo(no);
 		}
+		
+		
 	}
 
 	// - 파일에 케이크 리스트 저장

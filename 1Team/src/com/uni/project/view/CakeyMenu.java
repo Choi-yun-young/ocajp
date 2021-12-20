@@ -3,22 +3,17 @@ package com.uni.project.view;
 import java.util.Scanner;
 
 import com.uni.project.controller.CakeyLogin;
-import com.uni.project.controller.CakeyManager;
+import com.uni.project.controller.CakeyShopMenuManager;
 import com.uni.project.controller.CustomerBlackList;
-import com.uni.project.controller.SearchManager;
-import com.uni.project.controller.ShopManager;
 import com.uni.project.model.dao.CustomerManagement;
 
 public class CakeyMenu {
 	
 	private Scanner sc = new Scanner(System.in);
-	private CakeyManager cm = new CakeyManager();
+	private CakeyShopMenuManager cm = new CakeyShopMenuManager();
 	private CakeyLogin cl = new CakeyLogin();
 	private CustomerManagement cm1 = new CustomerManagement();
 	private CustomerBlackList cb = new CustomerBlackList();
-	private ShopManager sm = new ShopManager();
-	private SearchManager sm2 = new SearchManager();
-
 	
 	public void startMenu() {
 		
@@ -33,48 +28,57 @@ public class CakeyMenu {
 			int menu = sc.nextInt();
 			sc.nextLine();
 			
-			if(menu == 1) {
+			switch (menu) {
+			case 1:
+				cm1.newCustomer();
+				break;
+			case 2:
+				logoIn();
+				break;
+			case 3:
 				
-			} else if(menu == 2) {
-				
-				 System.out.print("아이디를 입력하시오 : ");
-				 String id = sc.nextLine();
-				 
-				 System.out.print("비밀번호를 입력하시오 : ");
-				 String pwd = sc.nextLine();
-				
-				 int result = cl.login(cm1, id, pwd);
-				 
-				 if (result == 1) {
-
-					 while(true) {
-
-						System.out.println("===== 로그인 메뉴=====");
-						System.out.println("1. 매장");
-						System.out.println("2. 고객");
-						System.out.println("3. 시스템(관리자)");
-						System.out.print("메뉴 선택 : ");
-						int num = sc.nextInt();
-						
-						switch(num) {
-						case 1 : mainMenu(1);break;
-						case 2 : mainMenu(2);break;
-						case 3 : mainMenu(3);break;
-						
-						}
-					 }
-				 }
-				
-			} else if(menu == 3) {
-				return;
-
-			} else {
+				break;
+			default:
 				System.out.println("메뉴를 다시 선택하세요");
 			}
-		
+			
 		}
 		
 	}
+	
+	public void logoIn() {
+		
+		System.out.print("아이디를 입력하시오 : ");
+		String id = sc.nextLine();
+		 
+		System.out.print("비밀번호를 입력하시오 : ");
+		String pwd = sc.nextLine();
+		
+		int result = cl.login(cm1, id, pwd);
+		 
+		if (result == 1) {
+
+			while(true) {
+
+			System.out.println("===== 로그인 메뉴=====");
+			System.out.println("1. 매장");
+			System.out.println("2. 고객");
+			System.out.println("3. 시스템(관리자)");
+			System.out.print("메뉴 선택 : ");
+			int num = sc.nextInt();
+			
+				switch(num) {
+			
+					case 1 : mainMenu(1);break;
+					case 2 : mainMenu(2);break;
+					case 3 : mainMenu(3);break;
+			
+				}
+			}
+		}
+	}
+	
+	
 	
 	public void mainMenu(int select) {
 		
@@ -86,30 +90,34 @@ public class CakeyMenu {
 				System.out.println("1. 케이크 등록");
 				System.out.println("2. 케이크 조회");
 				System.out.println("3. 케이크 등록 취소");
-				System.out.println("4. 공지사항 조회");
-				System.out.println("5. 블랙리스트 관리");
-				System.out.println("6. 돌아가기");
+				System.out.println("4. 예약주문 조회");
+				System.out.println("5. 공지사항 조회");
+				System.out.println("6. 블랙리스트 관리");
+				System.out.println("7. 돌아가기");
 				System.out.println("메뉴 입력: ");
 				int menu1 = sc.nextInt();
 				sc.nextLine();
 				
 				switch (menu1) {
 				case 1:
-					sm.inputCake();
+					cm.inputCake();
 					break;
 				case 2:
-					sm.cakeAllList();
+					cm.cakeAllList();
 					break;
 				case 3:
-					sm.deleteCake();
+					cm.deleteCake();
 					break;
 				case 4:
-					cm.storeNotice(); // 매장용 공지사항조회 추가
+					cm.reserveList();
 					break;
 				case 5:
-					cb.manageBlackList(cm1, select);
+					cm.storeNotice(); // 매장용 공지사항조회 추가		
 					break;
 				case 6:
+					cb.manageBlackList(cm1, select);
+					break;
+				case 7 : 
 					return;
 				default:
 					System.out.println("메뉴를 다시 선택하세요");
@@ -247,16 +255,16 @@ public class CakeyMenu {
 			
 			switch (menu) {
 			case 1:
-				sm2.newSearch();
+				cm.newSearch();
 				break;
 			case 2:
-				sm2.dispalysearchList();
+				cm.dispalySearchList();
 				break;
 			case 3:
-				sm2.deletesearch();
+				cm.deleteSearch();
 				break;
 			case 4:
-				sm2.sortsearch();
+				cm.sortSearch();
 				break;
 			case 0:
 				return;
@@ -264,9 +272,7 @@ public class CakeyMenu {
 				System.out.println("메뉴를 다시 선택하세요");
 			}
 		}
-		
 	
-		
 	}
 
 }
