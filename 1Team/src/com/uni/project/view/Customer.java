@@ -3,16 +3,19 @@ package com.uni.project.view;
 import java.util.Scanner;
 
 import com.uni.project.model.dao.CustomerManagement;
-import com.uni.project.model.vo.Member;
 
 public class Customer {
-	
+	 
 	private Scanner sc = new Scanner(System.in);
 	private com.uni.project.model.dao.
 	CustomerManagement cm = new CustomerManagement();
 	
-	public void Customer(){}
-	public void Main(){
+	public Customer() {
+		 
+		  
+	}
+	
+public void Main(){
 		
 		
 		while(true) {
@@ -46,7 +49,22 @@ public class Customer {
 		}
 		
 		
-	}
+}
+}
 
-}  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
 

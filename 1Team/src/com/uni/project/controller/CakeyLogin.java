@@ -15,7 +15,7 @@ public class CakeyLogin {
 		}
 		System.out.println("로그인에 실패하였습니다.");
 		return 0;
-	}
+}
 	
 	public int storeLogin(String storeCode) {
 		return 1;

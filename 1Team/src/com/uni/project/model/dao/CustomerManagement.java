@@ -11,35 +11,26 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
+import com.uni.project.controller.MemberDAO;
 import com.uni.project.model.vo.Member;
 
 public class CustomerManagement {
 	
-	
-
-
-
+	 MemberDAO dao ;
+ 
 	Scanner sc = new Scanner(System.in);
 	public Map<String, Member> MemberMap = new TreeMap<String, Member>();
 	//회원들의 정보를 저장하는 저장공간
 	public CustomerManagement() {//초기값 설정
-		 Member mem1 = new Member("공유", "자바킹", "1111", "1111",010-0000-7931);
-	        MemberMap.put(mem1.getId(), mem1);   
-	        Member mem2 = new Member("구름", "클라우드", "22222","22222 ",02-111-1234);
-	        MemberMap.put(mem2.getId(), mem2); 
 		
+	        dao = new MemberDAO(); //데이터 접근 객체 생성.
+	        
 		}
 	
-	 public void regMem(Member vo){       
-	        MemberMap.put(vo.getId(),vo);      
-	    }
-	   
-	  public void regMem(String id, String name,String pwd,String pwd1,int phone){     
-	        MemberMap.put(id, new Member(id, name, pwd, pwd1, phone));  
+	    
 	        
-	        
-	    }
-	  
+	    
+	 //저장된 회원 목록 보기 
 	  public void showMemList(){
 	        // tree map은 key값으로 정렬해준다. 하지만 value에 있는 이름으로 정렬을 하고 싶을때...
 	        // value 값 정렬로 해서가져오기      
@@ -66,102 +57,82 @@ public class CustomerManagement {
 	
 	public void newCustomer() {//회원가입
 		
+		Scanner scn = new Scanner(System.in);
+	       
+        System.out.println("***********회원가입************");
+       
+        while(true){
+            System.out.print("아이디*");
+           
 
-		//고객리스트
-		System.out.println("*********회원가입***********");
-		
-		System.out.println("이름*");
-		String name = sc.nextLine();
-		
-		System.out.println("아이디*");
-		String id = sc.nextLine();
-		
-	
-		System.out.println("비밀번호*");
-		String password = sc.nextLine();
-		
-		System.out.println("비밀번호 확인*");
-		String password1 = sc.nextLine();
-		
-		System.out.println("전화번호*");
-		int phoneNum = sc.nextInt();
-		sc.nextLine();
-		
-		//list.add(new Member(name,id,password,password1,phoneNum));
-		
-		System.out.println("***********회원가입을 축하합니다.*************");
-		
-		System.out.println();
-		}
-		
-		
-	
-	
-	public  boolean editMem (){//회원정보 수정
-		
-		
-		String id= sc.nextLine();
-		String name = sc.nextLine();
-		String pwd = sc.nextLine();
-		String pwd1 = sc.nextLine();
-		int phone = sc.nextInt();
-		sc.nextLine();
-		boolean chk = false;
-		
-		  if (MemberMap.containsKey(id)) {
-	            Member vo = MemberMap.get(id); //해당 아이디의 정보가 들어있는 객체 가져오기
-	            vo.setName(name); //이름 수정. 
-	            vo.setPassword(pwd);
-	            vo.setPassword1(pwd1);
-	            vo.setPhoneNum(phone);
-	            chk = true;
-	        }
-		  return chk;
-	}
-	
-	public void saveMemList() {
-	
-	 File file = new File("C:\\Users\\LG\\Desktop\\Member DB.txt") ;
-		
-	 
-		try {
-			FileWriter filewriter = new FileWriter(file,true);
-			if(file.isFile()&&file.canWrite()) {
-				System.out.println("*********회원가입***********");
-				System.out.println("이름*");
-				filewriter.append(sc.nextLine());
-				filewriter.append("\t");
-				System.out.println("아이디*");
-				filewriter.append(sc.nextLine());
-				filewriter.append("\t");
-				System.out.println("비밀번호*");
-				filewriter.append(sc.nextLine());
-				filewriter.append("\t");
-				System.out.println("비밀번호 확인*");
-				filewriter.append(sc.nextLine());
-				System.out.println("전화번호*");
-				
-				filewriter.append((char) sc.nextInt());
-				
-				filewriter.append("\r");
-				System.out.println("***********회원가입을 축하합니다.*************");
-			}
-			
-		filewriter.close();
-		
-		  } catch (IOException e) {
-			  e.printStackTrace();
-			  
-		  } 
-		
-		}
-		
-		
-	
+                String id=sc.nextLine();
+           
+            if(!(dao.containKey(id))){//중복이 아니면 브레이크
+            	System.out.println("사용가능한 아이디 입니다!");
+                break;
+            }else{
+                System.out.println("중복된 아이디입니다. 다시 입력해주세요!");
+            }
+           
+        }      
+        System.out.print("이름*");
+        String name = sc.nextLine();
+       
+        System.out.print("아이디*");
+         String id = sc.nextLine();
+      
+        System.out.print("비밀번호*");
+        String pw = sc.nextLine();    
+    
+
+        System.out.print("비밀번호*");
+        String pw1 = sc.nextLine(); 
+        
+        System.out.print("전화번호*");
+        int phone = sc.nextInt(); 
+        sc.nextLine();
+        
+        Member vo = new Member(id, name, pw,pw1, phone);
+        dao.regMem(vo); //입력받은 데이터 추가
+       
+        System.out.println("회원등록이 정상적으로 완료되었습니다.");
+       
+    }
+	       
+		  public void editMem(){
+			    
+			    Scanner scn = new Scanner(System.in);
+			   
+			    System.out.println("수정할 회원의 아이디를 입력해주세요:");
+			    String id = scn.nextLine();
+			   
+			    if (dao.containKey(id)) {
+			        System.out.println("[ "+id+ " ]님 의 정보====");
+			        System.out.println(dao.get(id)); 
+			        
+			        System.out.println("수정해주세요");
+			        System.out.println("이름*");
+			        String name = scn.nextLine();
+			        System.out.println("비밀번호*");
+			        String pwd = scn.nextLine();
+			        System.out.println("비밀번호 확인*");
+			        String pwd1 = scn.nextLine();
+			        System.out.println("전화번호*");
+			        int phone = scn.nextInt();
+			        dao.editMem(id, name, pwd, pwd1, phone); //연락처 수정.
+			       
+			        System.out.println("[ " + id + " ]님의 정상적으로 수정되었습니다.");
+			    }else{
+			        System.out.println("[ " + id + " ]는 존재하지 않는 아이디입니다.");
+			    }
+			}//editMem()----------------------
+
+
+
 		
 		public void Store() {
 			
-			LinkedList<Member>list = new LinkedList<Member>();		
+				
 		System.out.println("저장하시겠습니까? (예  / 아니요)>>");
 		
 		String input = sc.nextLine();
@@ -175,10 +146,7 @@ public class CustomerManagement {
 	
 	public void Cancle() {
 		
-		LinkedList<Member>list = new LinkedList<Member>();
-		
-		
-		
+	
 		
 		System.out.println("취소하시겠습니까? (예  / 아니요)>>");
 		
@@ -190,17 +158,22 @@ public class CustomerManagement {
 		
 	}
 	
-    public boolean delMem() {
-		
-    	String id = sc.nextLine();
-    	  boolean chk = false;
-          if (MemberMap.containsKey(id)) {
-              Member del = MemberMap.remove(id); //key를 입력받아서 키에 해당하는 데이터 삭제
-              chk = true;
-          }
-          return chk;
-      }
+	/**
+	* 회원 삭제
+	*/
+	public void delMem(){
+	    Scanner scn = new Scanner(System.in);      
+	    System.out.println("삭제할 회원의 아이디를 입력해주세요:");
+	    String id = scn.nextLine();
+	    if (dao.delMem(id)) {
+	        System.out.println("[ " + id + " ]이 정상적으로 삭제되었습니다.");        
+	    } else {
+	        System.out.println("[ " + id + " ]는 존재하지 않는 아이디입니다.");           
+	    }      
+	}
 
+
+	
     
 public void  Search(){
 		

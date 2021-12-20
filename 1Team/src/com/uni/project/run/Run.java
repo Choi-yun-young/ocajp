@@ -10,8 +10,8 @@ public class Run {
 		// TODO Auto-generated method stub
 
 
-		//Customer c= new Customer();
-		//c.Main();
+		Customer c= new Customer();
+		c.Main();
 
 		//CakeyMenu c = new CakeyMenu();
 		//c.searchMenu();
@@ -25,8 +25,8 @@ public class Run {
 //		SearchDao s = new SearchDao();
 //		s.getCake();
 		
-		CakeyShopMenu c = new CakeyShopMenu();
-		c.shopIncakeOrder();
+		//CakeyShopMenu c = new CakeyShopMenu();
+		//c.shopIncakeOrder();
 	}
 
 }

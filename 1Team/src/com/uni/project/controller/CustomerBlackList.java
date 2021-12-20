@@ -8,7 +8,7 @@ import com.uni.project.model.dao.CustomerManagement;
 import com.uni.project.model.vo.Member;
 
 public class CustomerBlackList {
-	
+
 	  private String FILE = "blacklist.txt";
 
 	    public void manageBlackList(CustomerManagement cm, int mode) {
@@ -48,7 +48,6 @@ public class CustomerBlackList {
 	                System.out.println("메뉴를 잘못 선택하셨습니다.");
 	        }
 	    }
-
 
 	    private LinkedList<Member> readBlackList() {
 	        LinkedList<Member> blackList = new LinkedList<Member>();
