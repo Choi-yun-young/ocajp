@@ -28,12 +28,14 @@ public class MemberDAO {
 	   
 	 //회원등록
 	    public void regMem(Member vo){       
-	        MemberMap.put(vo.getId(),vo);      
+	        MemberMap.put(vo.getId(),vo);    
+	        System.out.println(MemberMap.toString());
+	       
 	    }
 	   
-	    public void regMem(String id, String name,String pwd,String pwd1,String phone){     
-	        MemberMap.put(id, new Member(id, name, pwd, pwd1, phone));      
-	    }
+//	    public void regMem(String id, String name,String pwd,String pwd1,String phone){     
+//	        MemberMap.put(id, new Member(id, name, pwd, pwd1, phone));      
+//	    }
 	   
 	   
 	    //키중복 체크
@@ -91,11 +93,8 @@ public class MemberDAO {
 	    public void  Search(){
 			
 	    	System.out.println("**********회원조회*********");
-	    		
 	    	
-	    	
-				 showMemList();
-
+	    	showMemList();
 
 	}
 

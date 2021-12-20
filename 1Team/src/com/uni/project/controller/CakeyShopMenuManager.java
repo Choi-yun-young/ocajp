@@ -42,13 +42,13 @@ public class CakeyShopMenuManager {
 				
 			} else if (id.equals("매장") && pwd.equals("매장")){
 				
-				return 2;
+				return 1;
 				
 			}
 			if (member.getId().equals(id) && member.getPassword().equals(pwd)) {
 				
 				
-				return 1;
+				return 2;
 			}
 		}
 		System.out.println("로그인에 실패하였습니다.");

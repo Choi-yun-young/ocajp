@@ -1,8 +1,5 @@
 package com.uni.project.model.vo;
 
-
-
-
 public class Member implements Comparable<Member>{
 	
 	//기존고객, 신규고객의 정보

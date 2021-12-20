@@ -22,8 +22,6 @@ public class CakeyMenu {
 			System.out.println("2.로그인");
 			System.out.println("3.수정하기");
 			System.out.println("4.탈퇴하기");
-			System.out.println("5.회원조회");
-			System.out.println("6.다시선택하기");
 			System.out.println("번호를 입력해주세요 : ");
 			int num1 = sc.nextInt();
 			sc.nextLine();
@@ -44,10 +42,7 @@ public class CakeyMenu {
 			
 				case 4: cm1.delMem();break;
 				
-				case 5: cm1.showMemList(); break;
-				
-				case 6: break;
-				default: System.out.println("다시 선택하세요");return;
+				default: System.out.println("다시 선택하세요");
 				
 				}
 			
@@ -134,7 +129,7 @@ public class CakeyMenu {
 					cm.customerNoice(); // 고객용 공지사항 조회 추가
 					break;
 				case 5:
-					NoticeMenu();
+					searchMenu();
 					break;
 				case 6:
 					
@@ -156,6 +151,7 @@ public class CakeyMenu {
 	          System.out.println("========== 메인 메뉴 ==========");
 	          System.out.println("1. 블랙리스트 관리");
 	          System.out.println("2. 공지사항 관리");
+	          System.out.println("3. 회원정보 조회");
 	          System.out.println("0. 종료하기");
 	          System.out.println("메뉴 입력: ");
 	          int menu3 = sc.nextInt();
@@ -168,6 +164,9 @@ public class CakeyMenu {
 	          case 2:
 	            NoticeMenu();
 	            break;
+	          case 3:
+ 				cm1.showMemList(); 
+ 				break;
 	          case 0:
 	            System.out.println("Cakey 종료");
 	            return;

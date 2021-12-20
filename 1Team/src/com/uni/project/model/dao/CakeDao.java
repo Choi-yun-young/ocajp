@@ -10,7 +10,6 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 import com.uni.project.model.vo.Cake;
-import com.uni.project.model.vo.Notice;
 
 public class CakeDao {
 

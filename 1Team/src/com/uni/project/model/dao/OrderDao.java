@@ -9,14 +9,12 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-import com.uni.project.model.vo.Cake;
 import com.uni.project.model.vo.OrderInformation;
 
 public class OrderDao {
 	ArrayList<OrderInformation> oList = new ArrayList<>();
 	
-	public void OrderDao(ArrayList oList) {
-		
+	public OrderDao() {
 
 		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("Order.txt"))) {
 			
