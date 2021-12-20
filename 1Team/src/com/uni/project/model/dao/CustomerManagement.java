@@ -27,11 +27,6 @@ public class CustomerManagement {
 	        
 		}
 	
-	    
-	        
-	
-	   
-	
 	public void newCustomer() {//회원가입
 	
 	       

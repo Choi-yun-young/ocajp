@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -12,6 +13,7 @@ import com.uni.project.model.dao.NoticeDao;
 import com.uni.project.model.dao.OrderDao;
 import com.uni.project.model.dao.SearchDao;
 import com.uni.project.model.vo.Cake;
+import com.uni.project.model.vo.Member;
 import com.uni.project.model.vo.Notice;
 import com.uni.project.model.vo.OrderInformation;
 import com.uni.project.model.vo.Search;
@@ -26,6 +28,142 @@ public class CakeyShopMenuManager {
 	OrderDao od = new OrderDao();
 	CakeDao cd = new CakeDao();
 	ArrayList<OrderInformation> oList = od.oList();
+	private MemberDAO m = new MemberDAO();
+	
+	public int login(String id, String pwd) {
+		
+		Map<String, Member> MemberMap = m.getMemberMap();
+		
+		for (Member member : MemberMap.values()) {
+			
+			if(id.equals("시스템") && pwd.equals("시스템")) {
+				
+				return 3;
+				
+			} else if (id.equals("매장") && pwd.equals("매장")){
+				
+				return 2;
+				
+			}
+			if (member.getId().equals(id) && member.getPassword().equals(pwd)) {
+				
+				
+				return 1;
+			}
+		}
+		System.out.println("로그인에 실패하였습니다.");
+		return 0;
+	}
+	
+	public void inputCake() { // 케이크 등록 선택시
+
+		System.out.println("***** 케이크 등록 *****");
+		System.out.println("1. 케이크정보 등록");
+		System.out.println("0. 메인 메뉴로 돌아가기");
+
+		int num = sc.nextInt();
+		sc.nextLine();
+
+		switch (num) {
+		case 1:
+			while (true) {
+				System.out.println("***** 케이크 정보 등록 *****");
+				System.out.println("상품명 : ");
+				String name = sc.nextLine();
+
+				System.out.println("가격 : ");
+				int price = sc.nextInt();
+				sc.nextLine();
+
+				System.out.println("원재료('완료'를 입력하면 종료합니다) : "); // 원할때까지 계속 입력할 수 있게
+				String ingred = "";
+
+				while (true) {
+					String ing = sc.nextLine();
+					if (!(ing.equals("완료"))) { // 완료는 문자열에 추가되지 않게
+						ingred += ing + ". ";
+					} else if (ing.equals("완료")) {
+						break;
+					}
+				}
+
+				// 새 케이크 객체 만들고 CakeDao에 순서대로 전달
+				// 케이크 등록번호, 이름, 가격, 원재료
+				// 등록된 케이크가 없으면 1번
+				try {
+					cd.inputCake(new Cake(cd.getLastCakeNo() + 1, name, price, ingred));
+				} catch (IndexOutOfBoundsException e) {
+					cd.inputCake(new Cake(1, name, price, ingred));
+				}
+
+				System.out.println("정보 등록이 완료되었습니다!");
+				cd.saveFile();
+
+				System.out.println("계속 등록하시겠습니까? (Y/N)");
+				char ch = sc.nextLine().toUpperCase().charAt(0);
+
+				if (ch == 'Y') {
+					continue;
+				} else {
+					System.out.println("등록 취소, 메인메뉴로 돌아갑니다.");
+					return;
+				}
+
+			}
+		}
+	}
+
+	public void cakeAllList() {
+
+		// 현재 로그인한 매장정보 출력 메소드 추가하기
+
+		// 등록된 케이크 리스트 전체출력
+		// System.out.println(cd.ckList());
+
+		// 한줄씩 출력
+		for (Cake ck : cd.ckList()) {
+			System.out.println(ck);
+		}
+
+	}
+
+	public void deleteCake() {
+		// 케이크 삭제메뉴
+
+		for (Cake ck : cd.ckList()) {
+			System.out.println(ck);
+		}
+
+		System.out.println("삭제할 케이크 번호를 입력하세요 : ");
+		int num = sc.nextInt();
+		sc.nextLine();
+
+		Cake cake = cd.ckOne(num);// 삭제하려는게 몇번째 케이크인지 정의됨.
+
+		if (cake == null) {
+			System.out.println("삭제할 정보가 없습니다. 메인메뉴로 돌아갑니다.");
+			cd.saveFile();
+		} else {
+			System.out.println(cake);
+			System.out.println("정말 삭제하시겠습니까? ( Y / N )");
+			char ch = sc.nextLine().toUpperCase().charAt(0);
+			if (ch == 'Y') {
+				cd.deleteCake(num);
+				cd.saveFile();
+				System.out.println(num + "번 케이크" + cake.getName() + "이(가) 삭제되었습니다.");
+
+			}
+		}
+
+	}
+
+	public void reserveList() {
+		// 예약리스트 조회
+		od.oList();
+	}
+	
+	
+	
 		
 	public void shopIncakeOrder() { // 주문하기 창
 		
@@ -546,7 +684,7 @@ public void newNotice() { // 공지사항 등록
 		}
 	}
 	
-	public void dispalysearchList() { // 검색기록 조회
+	public void dispalySearchList() { // 검색기록 조회
 		
 		Set<Search> searchList = sd.allsearch(); // 검색기록 중복됐을때 중복된건 안나옴
 		
@@ -565,7 +703,7 @@ public void newNotice() { // 공지사항 등록
 		}
 	}
 	
-	public void deletesearch() {
+	public void deleteSearch() {
 		
 		System.out.println("검색 기록을 삭제 하시겠습니까?(y/n) ");
 		String input = sc.nextLine();
@@ -579,7 +717,7 @@ public void newNotice() { // 공지사항 등록
 	
 	}
 	
-	public void sortsearch() {
+	public void sortSearch() {
 		
 		Set<Search> searchList = sd.allsearch();
 		ArrayList<Search> searchList2 = new ArrayList<Search>(); // Collections.sort()기능 사용위해 List필요
