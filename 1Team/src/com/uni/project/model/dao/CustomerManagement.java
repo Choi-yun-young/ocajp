@@ -50,7 +50,8 @@ public class CustomerManagement {
                 System.out.println("중복된 아이디입니다. 다시 입력해주세요!");
             }
            
-        }      
+        }   
+        
         System.out.print("이름*");
         String name = sc.nextLine();
        
@@ -87,7 +88,7 @@ public class CustomerManagement {
 			    String id = sc.nextLine();
 			   
 			    if (dao.containKey(id)) {
-			        System.out.println("[ "+id+ " ]님 의 정보====");
+			        System.out.println("===========[ "+id+ " ]님 의 정보====");
 			        System.out.println(dao.get(id)); 
 			        
 			        System.out.println("수정해주세요");
@@ -100,61 +101,39 @@ public class CustomerManagement {
 			        System.out.println("전화번호*");
 			        String phone = sc.nextLine(); 
 			        dao.editMem(id, name, pwd, pwd1, phone); //연락처 수정.
-			       
-			        System.out.println("[ " + id + " ]님의 정상적으로 수정되었습니다.");
-			    }else{
-			        System.out.println("[ " + id + " ]는 존재하지 않는 아이디입니다.");
-			    }
+					
+					System.out.println("저장하시겠습니까? (예  / 아니요)>>");
+					
+					String input = sc.nextLine();
+					if(input.equals("예")) {
+						System.out.println("저장되었습니다.");
+						
+					}
+			    }  
 			}//editMem()----------------------
 
-
-
-		
-		public void Store() {
-			
-				
-		System.out.println("저장하시겠습니까? (예  / 아니요)>>");
-		
-		String input = sc.nextLine();
-		if(input.equals("예")) {
-			System.out.println("저장되었습니다.");
-			
-		}
-		
-
-	}
 	
-	public void Cancle() {
-		
-	
-		
-		System.out.println("취소하시겠습니까? (예  / 아니요)>>");
-		
-		String input = sc.nextLine();
-		if(input.equals("예")) {
-			System.out.println("취소되었습니다.");
-			
-		}
-		
-	}
-	
-	/**
-	* 회원 삭제
-	*/
-	public void delMem(){
+	public void delMem(){//회원삭제
 	        
 	    System.out.println("삭제할 회원의 아이디를 입력해주세요:");
 	    String id = sc.nextLine();
 	    if (dao.delMem(id)) {
-	        System.out.println("[ " + id + " ]이 정상적으로 삭제되었습니다.");        
+
+			System.out.println("탈퇴하시겠습니까? (예  / 아니요)>>");
+			
+			String input = sc.nextLine();
+			if(input.equals("예")) {
+				System.out.println("탈퇴되었습니다.");
+				       
 	    } else {
 	        System.out.println("[ " + id + " ]는 존재하지 않는 아이디입니다.");           
 	    }      
 	}
 
-
+	}
+}
 	
     
 
-}
+
 				
