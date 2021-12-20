@@ -1,20 +1,30 @@
 package com.uni.project.controller;
 
-import java.util.ArrayList; 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.Scanner;
+import java.util.Set;
 
 import com.uni.project.model.dao.CakeDao;
+import com.uni.project.model.dao.NoticeDao;
 import com.uni.project.model.dao.OrderDao;
+import com.uni.project.model.dao.SearchDao;
 import com.uni.project.model.vo.Cake;
+import com.uni.project.model.vo.Notice;
 import com.uni.project.model.vo.OrderInformation;
+import com.uni.project.model.vo.Search;
 
 public class CakeyShopMenuManager {
 	
+	
+	private SearchDao sd = new SearchDao();
+	private NoticeDao nd = new NoticeDao();
+	private Scanner sc = new Scanner(System.in);
 	Date today = new Date();
 	OrderDao od = new OrderDao();
 	CakeDao cd = new CakeDao();
-	Scanner sc= new Scanner(System.in);
 	ArrayList<OrderInformation> oList = od.oList();
 		
 	public void shopIncakeOrder() { // 주문하기 창
@@ -212,5 +222,395 @@ public class CakeyShopMenuManager {
 
 		od.deleteOrder(menu-1); // 추출
 		//메인 메뉴 메소드로
+	}
+	
+public void newNotice() { // 공지사항 등록
+		
+		Date today = new Date();
+		
+		System.out.println("새로운 공지사항 등록");
+		
+		System.out.println("\n공지사항 카테고리 입력(공통,매장,고객): ");
+		String category = sc.nextLine();
+		
+		System.out.println("\n공지사항 제목 입력: ");
+		String title = sc.nextLine();
+		
+		System.out.println("\n공지사항 내용 입력(exit입력시 입력종료): ");
+		
+		StringBuilder sb = new StringBuilder();
+		String Contents = null;
+		
+		while (true) {
+			
+			Contents = sc.nextLine();
+		
+			if(Contents.equalsIgnoreCase("exit")) {
+				break;
+			} else {
+				sb.append("\n");	
+				sb.append(Contents);
+			}
+		
+		}
+		
+		System.out.println("\n공지사항을 등록하시겠습니까?(y/n): ");
+		String answer = sc.nextLine();
+		
+		if(answer.equalsIgnoreCase("y")) {
+															// 스트링빌더를 스트링형태로 저장
+			nd.newNotice(new Notice(category, title, today, sb.toString()));
+			nd.saveNoiceFile(); // 작업마무리때마자 저장
+			
+		} else {
+			System.out.println("\n등록 취소\n");
+
+		}
+
+		
+	}
+	
+	public void displayNotice() { // 관리자용 공지사항 조회
+		
+		ArrayList<Notice> nList = nd.allNotice();
+		
+		if(nList.isEmpty()) {
+			System.out.println("\n등록된 공지사항이 없습니다\n");
+			return;
+		}
+		
+		// 모든 공지사항 제목, 날짜만 조회
+		for(Notice n : nList) {
+			System.out.println(n.toStringSystem());
+		}
+		
+		while (true) { 
+		// 모든 공지사항제목을 보면서 선택한 공지 사항 상세조회 반복
+
+			System.out.println("상세 조회 할 공지사항 번호: ");
+			System.out.println("(0 입력시 이전메뉴)\n");
+	
+			int index = sc.nextInt();
+			sc.nextLine();
+			
+			if(index == 0) {
+				return;
+			}
+			
+			Notice n = nd.selectNotice(index); 
+			// 해당공지의 갖고옴
+			// 상세내용출력
+			try {
+				// 선택한 번호의 공지사항이 있는 것만 상세히 출력
+				System.out.println(n.toStringAll());
+		
+			} catch (NullPointerException e) {
+				// 없으면 한줄띄우고 반복
+				System.out.println("\n");
+			}
+		
+		}
+
+	}
+	
+	
+	public void deleteNotice() { // 공지사항 삭제
+
+		ArrayList<Notice> nList = nd.allNotice();
+		
+		if(nList.isEmpty()) {
+			System.out.println("\n등록된 공지사항이 없습니다\n");
+			return;
+		}
+		for(Notice n : nList) {
+			System.out.println(n.toStringSystem());
+		}
+		// 모든 공지리스트에서 제목과 날짜만 보고 삭제선택
+		
+		while (true) {
+		
+			System.out.println("삭제 할 공지사항 번호: ");
+			System.out.println("(0 입력시 이전메뉴)\n");
+			int index = sc.nextInt();
+			sc.nextLine();
+			
+			if(index == 0) {
+				return;
+			}
+	
+			Notice n = nd.selectNotice(index);
+			
+			// 없는 번호 공지사항 삭제하려하는지 확인
+			if(n == null) {
+				continue;
+			} else { 
+				
+				// null 확인받고 입력받기
+				System.out.println("\n"+index+"번 공지사항을 삭제하시겠습니까?(y/n): ");
+				String answer = sc.nextLine();
+				
+				if(answer.equalsIgnoreCase("y")) {
+					nd.deletNotice(index);
+					nd.saveNoiceFile(); // 작업마무리때마자 저장
+					
+				} else {
+					System.out.println("\n삭제 취소\n");
+				
+				}
+			}
+			
+		}	
+		
+	}
+
+	public void modifyNotice() { // 공지사항 수정
+
+		ArrayList<Notice> nList = nd.allNotice();
+		
+		if(nList.isEmpty()) {
+			System.out.println("\n등록된 공지사항이 없습니다\n");
+			return;
+		}
+		for(Notice n : nList) {
+			System.out.println(n.toStringSystem());
+		}
+		// 모든 공지사항 제목 날짜만 보고 수정 선택
+		
+		while(true) {
+			
+			System.out.println("수정 할 공지사항 번호: ");
+			System.out.println("(0 입력시 이전메뉴)");
+			int index = sc.nextInt();
+			sc.nextLine();
+			
+			if(index == 0) {
+				return;
+			} 
+			
+			Notice n = nd.selectNotice(index);
+			// 없는번호 공지 수정하려는 건지 확인
+			if(n != null) {
+				
+				System.out.println("1. 제목수정");
+				System.out.println("2. 내용수정");
+				
+				int modi = sc.nextInt();
+				sc.nextLine();
+				
+				if(modi == 1) {
+					
+					System.out.println("수정할 제목 입력: ");
+					String title = sc.nextLine();
+					nd.modifyNoticeTitle(index, title);
+					nd.saveNoiceFile(); // 작업마무리때마자 저장
+					
+				} else if (modi == 2){
+						
+					System.out.println("수정할 공지사항 내용 입력: ");
+					System.out.println("(exit입력시 입력종료)");
+					
+					StringBuilder sb = new StringBuilder();
+					String sujung = null;
+					
+					while (true) {
+						
+						sujung = sc.nextLine();
+					
+						if(sujung.equalsIgnoreCase("exit")) {
+							break;
+						} else {
+							sb.append(sujung);
+							sb.append("\n");	
+						}
+						
+					}
+					String content = sb.toString();
+					nd.modifyNoticeContent(index, content); 
+					nd.saveNoiceFile(); // 작업마무리때마자 저장
+					
+				} 
+			
+			} 
+			System.out.println();
+		}
+
+	}
+	
+	public void storeNotice() { // 매장공지사항조회기능
+		
+		String input = "매장";
+		ArrayList<Notice> selecList = nd.storeNotice(input);
+		
+		if(selecList.isEmpty()) {
+			System.out.println("\n등록된 공지사항이 없습니다\n");
+			System.out.println();
+			return;
+		} else {
+			
+			for(int i = 0; i < selecList.size(); i++) {
+				System.out.println(selecList.get(i).toString());
+			}
+			
+		}
+		
+		while (true) { 
+			// 선택된 공지사항의 제목을 보면서 원하는 공지 사항 상세조회 반복
+
+			System.out.println("상세 조회 할 공지사항 번호: ");
+			System.out.println("(0 입력시 이전메뉴)");
+	
+			int index = sc.nextInt();
+			sc.nextLine();
+			
+			if(index == 0) {
+				return;
+			}
+			
+			for(int i = 0; i < selecList.size(); i++) {
+				
+				if(index == selecList.get(i).getIndex()) {
+					Notice n = nd.selectNotice(index); 
+					System.out.println(n.toStringAll());	
+				} 
+				
+			}
+			System.out.println();
+		}
+		
+	}
+
+	public void customerNoice() { // 고객공지사항기능
+		
+		String input = "고객";
+		ArrayList<Notice> selecList = nd.customerNotice(input);
+		
+		if(selecList.isEmpty()) {
+			System.out.println("\n등록된 공지사항이 없습니다\n");
+			System.out.println();
+			return;
+		} else {
+			
+			for(int i = 0; i < selecList.size(); i++) {
+				System.out.println(selecList.get(i).toString());
+			}
+			
+		}
+		
+		while (true) { 
+			// 선택된 공지사항의 제목을 보면서 원하는 공지 사항 상세조회 반복
+
+			System.out.println("상세 조회 할 공지사항 번호: ");
+			System.out.println("(0 입력시 이전메뉴)");
+		
+			int index = sc.nextInt();
+			sc.nextLine();
+			
+			if(index == 0) {
+				return;
+			}
+			// 출력된 공지사항의 번호만 입력하게 하기
+			// 상세내용출력
+			
+			for(int i = 0; i < selecList.size(); i++) {
+	
+				if(index == selecList.get(i).getIndex()) {
+					Notice n = nd.selectNotice(index); 
+					System.out.println(n.toStringAll());
+	
+				}
+
+			}
+			System.out.println();
+		}
+		
+		
+	}
+	
+	public void newSearch() { // 새로운 서치
+		
+		sd.getCake();
+		
+		System.out.println("케이크 찾기");
+		System.out.println("검색어가 포함된 케이크 검색: ");
+		String input = sc.nextLine();
+		
+		Search s = sd.newSearch(input);
+		
+		if(s != null) {
+			System.out.println(s.toString());
+			sd.saveFile();
+			
+		} else {
+			System.out.println("검색된 케익이 없습니다");
+
+		}
+	}
+	
+	public void dispalysearchList() { // 검색기록 조회
+		
+		Set<Search> searchList = sd.allsearch(); // 검색기록 중복됐을때 중복된건 안나옴
+		
+		if(searchList.isEmpty()) {
+			System.out.println("검색기록이 없습니다");
+			return;
+		}
+		else {
+			
+			Iterator<Search> it = searchList.iterator();
+			while (it.hasNext()) {
+				System.out.println((Search) it.next());
+				
+			}
+	
+		}
+	}
+	
+	public void deletesearch() {
+		
+		System.out.println("검색 기록을 삭제 하시겠습니까?(y/n) ");
+		String input = sc.nextLine();
+
+		if(input.equalsIgnoreCase("y")) {
+			sd.deletsearch();
+			
+		} else {
+			System.out.println("삭제 취소");
+		}
+	
+	}
+	
+	public void sortsearch() {
+		
+		Set<Search> searchList = sd.allsearch();
+		ArrayList<Search> searchList2 = new ArrayList<Search>(); // Collections.sort()기능 사용위해 List필요
+		
+		Iterator<Search> it = searchList.iterator();
+		while (it.hasNext()) {
+			searchList2.add((Search) it.next());
+			
+		}
+		
+		
+		System.out.println("검색 기록 정렬하기");
+		System.out.println("1. 검색한 케이크 이름 오름차순");
+		System.out.println("2 .검색한 케이크 이름 내림차순");
+		
+		int menu = sc.nextInt();
+		sc.nextLine();
+		
+		if(menu == 1) {
+			
+			Collections.sort(searchList2, new AscSearchList()); 
+			for(Search b: searchList2) {
+				System.out.println(b.toString()); 
+			}
+		} 
+		else if(menu == 2) {
+			Collections.sort(searchList2, new DescSearchList());
+			for(Search b: searchList2) {
+				System.out.println(b.toString()); 
+			}	
+		}
+		
 	}
 }
