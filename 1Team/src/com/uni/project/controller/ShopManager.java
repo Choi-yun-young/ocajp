@@ -3,6 +3,7 @@ package com.uni.project.controller;
 import java.util.Scanner;
 
 import com.uni.project.model.dao.CakeDao;
+import com.uni.project.model.dao.OrderDao;
 import com.uni.project.model.vo.Cake;
 
 public class ShopManager {
@@ -10,6 +11,7 @@ public class ShopManager {
 	Cake ck = new Cake();
 	CakeDao cd = new CakeDao();
 	CakeyManager cm = new CakeyManager();
+	OrderDao od = new OrderDao();
 
 	public void inputCake() { // 케이크 등록 선택시
 
@@ -115,6 +117,7 @@ public class ShopManager {
 
 	public void reserveList() {
 		// 예약리스트 조회
+		od.oList();
 	}
 
 	public void noticeList() {
