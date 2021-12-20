@@ -22,9 +22,7 @@ public class MemberDAO {
 	        MemberMap.put(mem2.getId(), mem2);  
 	    }
 	   
-	    /**
-	    * 회원 등록하기
-	    */
+	 //회원등록
 	    public void regMem(Member vo){       
 	        MemberMap.put(vo.getId(),vo);      
 	    }
@@ -33,32 +31,7 @@ public class MemberDAO {
 	        MemberMap.put(id, new Member(id, name, pwd, pwd1, phone));      
 	    }
 	   
-	    //저장회원목록보기
-	      public void showMemList(){
-	        // tree map은 key값으로 정렬해준다. 
-	        // value 값 정렬로 해서가져오기      
-	        Set<Member> set = new TreeSet<Member>(MemberMap.values());     
-	        Iterator<Member> itr =set.iterator() ;
-	     
-	        System.out.println("                             Member List");
-	        System.out.println("=================================================================================");
-	        if(MemberMap.size()>0){        
-	            System.out.println("아이디\t\t이름\t\t연락처");
-	            System.out.println("==============================================================================");
-	           
-	            while (itr.hasNext()){
-	                Member vo = itr.next();
-	                System.out.println(vo);
-	            }
-	           
-	        }else{
-	            System.out.println("저장된 데이터가 없습니다. ");
-	        }
-	        System.out.println("==============================================================총 "+MemberMap.size()+" 명=\n");
-	    }
 	   
-	   
-	    
 	    //키중복 체크
 	     
 	    public boolean containKey(String key){     
@@ -121,7 +94,28 @@ public class MemberDAO {
 
 
 	}
-	   
-	 
-	}
 
+		public void showMemList() {
+			 // tree map은 key값으로 정렬해준다. 
+	        // value 값 정렬로 해서가져오기      
+	        Set<Member> set = new TreeSet<Member>(MemberMap.values());     
+	        Iterator<Member> itr =set.iterator() ;
+	     
+	        System.out.println("                             Member List");
+	        System.out.println("=================================================================================");
+	        if(MemberMap.size()>0){        
+	            System.out.println("아이디\t\t이름\t\t연락처");
+	            System.out.println("==============================================================================");
+	           
+	            while (itr.hasNext()){
+	                Member vo = itr.next();
+	                System.out.println(vo);
+	            }
+	           
+	        }else{
+	            System.out.println("저장된 데이터가 없습니다. ");
+	        }
+	        System.out.println("==============================================================총 "+MemberMap.size()+" 명=\n");
+	    }
+	   
+}
