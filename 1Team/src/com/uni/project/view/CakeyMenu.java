@@ -5,9 +5,9 @@ import java.util.Scanner;
 import com.uni.project.controller.CakeyLogin;
 import com.uni.project.controller.CakeyManager;
 import com.uni.project.controller.CustomerBlackList;
-import com.uni.project.controller.CustomerManagement;
 import com.uni.project.controller.SearchManager;
 import com.uni.project.controller.ShopManager;
+import com.uni.project.model.dao.CustomerManagement;
 
 public class CakeyMenu {
 	
@@ -86,9 +86,10 @@ public class CakeyMenu {
 				System.out.println("1. 케이크 등록");
 				System.out.println("2. 케이크 조회");
 				System.out.println("3. 케이크 등록 취소");
-				System.out.println("4. 공지사항 조회");
-				System.out.println("5. 블랙리스트 관리");
-				System.out.println("6. 돌아가기");
+				System.out.println("4. 예약주문 조회");
+				System.out.println("5. 공지사항 조회");
+				System.out.println("6. 블랙리스트 관리");
+				System.out.println("7. 돌아가기");
 				System.out.println("메뉴 입력: ");
 				int menu1 = sc.nextInt();
 				sc.nextLine();
@@ -104,12 +105,15 @@ public class CakeyMenu {
 					sm.deleteCake();
 					break;
 				case 4:
-					cm.storeNotice(); // 매장용 공지사항조회 추가
+					sm.reserveList();
 					break;
 				case 5:
-					cb.manageBlackList(cm1, select);
+					cm.storeNotice(); // 매장용 공지사항조회 추가		
 					break;
 				case 6:
+					cb.manageBlackList(cm1, select);
+					break;
+				case 7 : 
 					return;
 				default:
 					System.out.println("메뉴를 다시 선택하세요");
