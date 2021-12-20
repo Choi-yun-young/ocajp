@@ -5,9 +5,9 @@ import java.util.Scanner;
 import com.uni.project.controller.CakeyLogin;
 import com.uni.project.controller.CakeyManager;
 import com.uni.project.controller.CustomerBlackList;
-import com.uni.project.controller.CustomerManagement;
 import com.uni.project.controller.SearchManager;
 import com.uni.project.controller.ShopManager;
+import com.uni.project.model.dao.CustomerManagement;
 
 public class CakeyMenu {
 	
