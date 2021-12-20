@@ -2,6 +2,7 @@ package com.uni.project.view;
 
 import java.util.Scanner;
 
+import com.uni.project.controller.MemberDAO;
 import com.uni.project.model.dao.CustomerManagement;
 import com.uni.project.model.vo.Member;
 
@@ -10,7 +11,7 @@ public class Customer {
 	private Scanner sc = new Scanner(System.in);
 	private com.uni.project.model.dao.
 	CustomerManagement cm = new CustomerManagement();
-	
+	MemberDAO da = new MemberDAO();
 	public void Customer(){}
 	public void Main(){
 		
@@ -35,7 +36,7 @@ public class Customer {
 			case 4: cm.Cancle();break;
 			case 5: cm.delMem();break;
 			
-			case 6: cm.Search(); break;
+			case 6: cm.showMemList(); break;
 			
 			case 7: return;
 			default: System.out.println("다시 선택하세요");

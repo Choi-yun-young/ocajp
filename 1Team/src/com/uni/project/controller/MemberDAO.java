@@ -16,9 +16,9 @@ public class MemberDAO {
 	    //기본생성자
 	    public MemberDAO() {
 	        //초기값 설정.
-	       Member mem1 = new Member("공유", "자바킹", "123456", "123456", 010-0000-7931);
+	       Member mem1 = new Member("공유", "자바킹", "123456", "123456", "010-0000-7931");
 	        MemberMap.put(mem1.getId(), mem1);   
-	        Member mem2 = new Member("구름", "구름이", "123456", "123456", 010-0002-7991);
+	        Member mem2 = new Member("구름", "구름이", "123456", "123456", "010-0002-7991");
 	        MemberMap.put(mem2.getId(), mem2);  
 	    }
 	   
@@ -29,7 +29,7 @@ public class MemberDAO {
 	        MemberMap.put(vo.getId(),vo);      
 	    }
 	   
-	    public void regMem(String id, String name,String pwd,String pwd1,int phone){     
+	    public void regMem(String id, String name,String pwd,String pwd1,String phone){     
 	        MemberMap.put(id, new Member(id, name, pwd, pwd1, phone));      
 	    }
 	   
@@ -41,10 +41,10 @@ public class MemberDAO {
 	        Iterator<Member> itr =set.iterator() ;
 	     
 	        System.out.println("                             Member List");
-	        System.out.println("======================================================================");
+	        System.out.println("=================================================================================");
 	        if(MemberMap.size()>0){        
-	            System.out.println("아이디\t\t이름\t\t  \t연락처");
-	            System.out.println("======================================================================");
+	            System.out.println("아이디\t\t이름\t\t연락처");
+	            System.out.println("==============================================================================");
 	           
 	            while (itr.hasNext()){
 	                Member vo = itr.next();
@@ -74,7 +74,7 @@ public class MemberDAO {
 	    }
 	   
 	   
-	    public boolean editMem(String name,String id,String pwd,String pwd1,int phone){
+	    public boolean editMem(String name,String id,String pwd,String pwd1,String phone){
 	       
 	        boolean chk = false;
 	        if (MemberMap.containsKey(id)) {
@@ -111,6 +111,16 @@ public class MemberDAO {
 	        MemberMap = memberMap;
 	    }
 	   
+	    public void  Search(){
+			
+	    	System.out.println("**********회원조회*********");
+	    		
+	    	
+	    	
+				 showMemList();
+
+
+	}
 	   
 	 
 	}

@@ -11,22 +11,22 @@ public class Member implements Comparable<Member>{
 	private String Id;
 	private String password;
 	private String password1;
-	private int phoneNum;
+	private String phoneNum;
 
 	public Member() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Member(String name, String id, String password, String password1, int phoneNum) {
+	public Member(String name, String id, String password, String password1, String phone) {
 		super();
 		this.name = name;
 		Id = id;
 		this.password = password;
 		this.password1 = password1;
-		this.phoneNum = phoneNum;
+		this.phoneNum = phone;
 	}
 	
-	public Member(String id, String name, int phoneNum) {
+	public Member(String id, String name, String phoneNum) {
 		super();
 		this.Id = id;
 		this.name = name;
@@ -67,21 +67,22 @@ public class Member implements Comparable<Member>{
 		this.password1 = password1;
 	}
 
-	public int getPhoneNum() {
+	
+
+	
+
+
+	public String getPhoneNum() {
 		return phoneNum;
 	}
 
-	public void setPhoneNum(int phoneNum) {
+	public void setPhoneNum(String phoneNum) {
 		this.phoneNum = phoneNum;
 	}
-	
-
-	
 
 	@Override
 	public String toString() {
-		return "Member [name=" + name + ", Id=" + Id + ", password=" + password + ", password1=" + password1
-				+ ", phoneNum=" + phoneNum + ", RegDate=" +"]";
+		return Id +"           " +name+"           "  +phoneNum + "  ";
 	}
 
 	@Override
