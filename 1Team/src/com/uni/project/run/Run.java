@@ -1,6 +1,7 @@
 package com.uni.project.run;
 
-import com.uni.project.controller.CakeyShopMenuManager; 
+import com.uni.project.controller.CakeyShopMenuManager;
+import com.uni.project.view.CakeyMenu;
 import com.uni.project.view.Customer;
 
 public class Run {
@@ -12,8 +13,8 @@ public class Run {
 		//Customer c= new Customer();
 		//c.Main();
 
-		//CakeyMenu c = new CakeyMenu();
-		//c.searchMenu();
+		CakeyMenu c = new CakeyMenu();
+		c.startMenu();
 
 		//Customer c= new Customer();
 		//c.Main();
@@ -24,8 +25,8 @@ public class Run {
 //		SearchDao s = new SearchDao();
 //		s.getCake();
 		
-		CakeyShopMenuManager c = new CakeyShopMenuManager();
-		c.shopIncakeOrder();
+		//CakeyShopMenuManager c = new CakeyShopMenuManager();
+		//c.shopIncakeOrder();
 
 	}
 
