@@ -20,7 +20,7 @@ public class CustomerManagement {
 
 
 	Scanner sc = new Scanner(System.in);
-	public Map<String, Member> MemberMap = new TreeMap<String, Member>();
+	private Map<String, Member> MemberMap = new TreeMap<String, Member>();
 	//회원들의 정보를 저장하는 저장공간
 	public CustomerManagement() {//초기값 설정
 		 Member mem1 = new Member("공유", "자바킹", "1111", "1111",010-0000-7931);

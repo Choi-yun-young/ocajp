@@ -10,8 +10,8 @@ public class Run {
 		// TODO Auto-generated method stub
 
 
-		//Customer c= new Customer();
-		//c.Main();
+		Customer c= new Customer();
+		c.Main();
 
 		//CakeyMenu c = new CakeyMenu();
 		//c.searchMenu();

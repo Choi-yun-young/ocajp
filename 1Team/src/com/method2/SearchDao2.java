@@ -1,4 +1,4 @@
-package com.method2;
+package com.uni.project.model.dao;
 
 import java.io.EOFException;
 import java.io.FileInputStream;

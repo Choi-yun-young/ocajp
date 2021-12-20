@@ -1,11 +1,9 @@
-package com.method2;
+package com.uni.project.controller;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-import com.uni.project.controller.AscSearchList;
-import com.uni.project.controller.DescSearchList;
 import com.uni.project.model.dao.SearchDao2;
 import com.uni.project.model.vo.Cake;
 
