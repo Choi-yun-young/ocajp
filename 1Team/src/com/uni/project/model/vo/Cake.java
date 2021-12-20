@@ -1,7 +1,6 @@
 package com.uni.project.model.vo;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 public class Cake implements Serializable {
 

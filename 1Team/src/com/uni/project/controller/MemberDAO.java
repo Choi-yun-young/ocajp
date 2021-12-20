@@ -16,20 +16,26 @@ public class MemberDAO {
 	    //기본생성자
 	    public MemberDAO() {
 	        //초기값 설정.
-	       Member mem1 = new Member("공유", "자바킹", "123456", "123456", "010-0000-7931");
+	    	Member mem1 = new Member("공유", "자바킹", "123456", "123456", "010-0000-7931");
 	        MemberMap.put(mem1.getId(), mem1);   
 	        Member mem2 = new Member("구름", "구름이", "123456", "123456", "010-0002-7991");
 	        MemberMap.put(mem2.getId(), mem2);  
+	        Member mem3 = new Member("시스템", "시스템", "시스템", "시스템", "010-0000-0000");
+	        MemberMap.put(mem3.getId(), mem3);  
+	        Member mem4 = new Member("매장", "매장", "매장", "매장", "010-0000-0000");
+	        MemberMap.put(mem4.getId(), mem4);  
 	    }
 	   
 	 //회원등록
 	    public void regMem(Member vo){       
-	        MemberMap.put(vo.getId(),vo);      
+	        MemberMap.put(vo.getId(),vo);    
+	        System.out.println(MemberMap.toString());
+	       
 	    }
 	   
-	    public void regMem(String id, String name,String pwd,String pwd1,String phone){     
-	        MemberMap.put(id, new Member(id, name, pwd, pwd1, phone));      
-	    }
+//	    public void regMem(String id, String name,String pwd,String pwd1,String phone){     
+//	        MemberMap.put(id, new Member(id, name, pwd, pwd1, phone));      
+//	    }
 	   
 	   
 	    //키중복 체크
@@ -87,11 +93,8 @@ public class MemberDAO {
 	    public void  Search(){
 			
 	    	System.out.println("**********회원조회*********");
-	    		
 	    	
-	    	
-				 showMemList();
-
+	    	showMemList();
 
 	}
 

@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Notice implements Serializable {
-	
+	  
 	private static final long serialVersionUID = 1L;
 	private int index;
 	private String category;

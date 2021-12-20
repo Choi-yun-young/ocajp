@@ -8,7 +8,7 @@ import com.uni.project.model.dao.CustomerManagement;
 import com.uni.project.model.vo.Member;
 
 public class CustomerBlackList {
-	
+	 
 	  private String FILE = "blacklist.txt";
 
 	    public void manageBlackList(CustomerManagement cm, int mode) {

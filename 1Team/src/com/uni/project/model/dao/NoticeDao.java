@@ -83,9 +83,22 @@ public class NoticeDao {
 			}
 		
 		}
-		
+		setNoticeNo();
 	}
 	
+	private void setNoticeNo() {
+		
+		nList.get(0).setIndex(1);
+		
+		int no = 1;
+		for(int i = 0; i < nList.size(); i++)  {
+		
+			nList.get(i).setIndex(no);
+			no++;
+		}
+		
+	}
+
 	public void modifyNoticeTitle(int index, String title) {
 		
 		for(int i = 0; i < nList.size(); i++) {

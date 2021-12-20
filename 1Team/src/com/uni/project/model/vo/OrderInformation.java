@@ -1,6 +1,10 @@
 package com.uni.project.model.vo;
 
-public class OrderInformation {
+import java.io.Serializable;
+
+public class OrderInformation implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	private String date;//예약날짜
 	private String sName;//예약매장
 	private int price;

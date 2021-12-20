@@ -6,7 +6,7 @@ import com.uni.project.model.vo.Search;
 
 public class AscSearchList implements Comparator<Search> {
 
-	@Override
+	@Override 
 	public int compare(Search o1, Search o2) {
 		
 		return o1.getCakeName().compareTo(o2.getCakeName());
