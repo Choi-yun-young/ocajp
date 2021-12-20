@@ -17,7 +17,7 @@ public class OrderInformation {
 		this.date = date;
 		this.num = num;
 		// TODO Auto-generated constructor stub
-}
+	}
 	
 	public int getNum() {
 		return num;

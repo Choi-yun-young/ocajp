@@ -1,7 +1,7 @@
 package com.uni.project.run;
 
 import com.uni.project.controller.CakeyShopMenuManager;
-import com.uni.project.view.CakeyShopMenu;
+//import com.uni.project.view.CakeyShopMenu;
 import com.uni.project.view.Customer;
 
 public class Run {
@@ -10,8 +10,8 @@ public class Run {
 		// TODO Auto-generated method stub
 
 
-		Customer c= new Customer();
-		c.Main();
+		//Customer c= new Customer();
+		//c.Main();
 
 		//CakeyMenu c = new CakeyMenu();
 		//c.searchMenu();

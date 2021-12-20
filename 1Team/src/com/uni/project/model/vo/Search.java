@@ -12,7 +12,7 @@ public class Search implements Serializable{
 	private String cakeIngred;
 	 
 	public Search() {}
-
+	
 	public Search(String cakeName, int cakePrice, String cakeIngred) {
 		super();
 		this.cakeName = cakeName;
