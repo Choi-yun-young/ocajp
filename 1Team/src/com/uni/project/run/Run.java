@@ -8,8 +8,9 @@ public class Run {
 		// TODO Auto-generated method stub
 		CakeyMenu c = new CakeyMenu();
 		c.startMenu();
-		
-
+		 
+//		CakeyShopMenuManager i = new CakeyShopMenuManager();
+//		i.inputCake();
 
 
 	}

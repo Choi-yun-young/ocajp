@@ -1,25 +1,43 @@
 package com.uni.project.controller;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
+
 import com.uni.project.model.vo.Member;
+import com.uni.project.model.vo.Search;
 
 public class MemberDAO {
 
-	 private Map<String, Member> MemberMap = new TreeMap<String, Member>();
+	 private Map<String, Member> MemberMap = new HashMap<String, Member>();
 	    //회원들의 정보를 저장하는 저장공간.
-	           
+	            
 	    //기본생성자
 	    public MemberDAO() {
-	        //초기값 설정.
+//	        초기값 설정.
 	    	Member mem1 = new Member("공유", "자바킹", "123456", "123456", "010-0000-7931");
 	        MemberMap.put(mem1.getId(), mem1);   
 	        Member mem2 = new Member("구름", "구름이", "123456", "123456", "010-0002-7991");
 	        MemberMap.put(mem2.getId(), mem2);  
+	        
+	        
+	        
+	        
+	        
 	        Member mem3 = new Member("시스템", "시스템", "시스템", "시스템", "010-0000-0000");
 	        MemberMap.put(mem3.getId(), mem3);  
 	        Member mem4 = new Member("매장", "매장", "매장", "매장", "010-0000-0000");
@@ -28,8 +46,10 @@ public class MemberDAO {
 	   
 	 //회원등록
 	    public void regMem(Member vo){       
+	    	
 	        MemberMap.put(vo.getId(),vo);    
-	        System.out.println(MemberMap.toString());
+	        
+	      
 	       
 	    }
 	   
@@ -120,5 +140,31 @@ public class MemberDAO {
 	        }
 	        System.out.println("==============================================================총 "+MemberMap.size()+" 명=\n");
 	    }
-	   
+	  
+
+	        
+		
+	public void saveFile() {
+			   
+		Map<String, Member> memberMap = getMemberMap();
+
+	      try (BufferedWriter bf = new BufferedWriter( new FileWriter("Member.txt"))) {
+	    	 
+	    	  	
+	    	  for (Entry<String, Member> entry :  memberMap.entrySet()) {
+	  
+	                // put key and value separated by a colon
+	                bf.write(entry.getKey() + ":"+ entry.getValue());
+
+	            }
+	  
+	            bf.flush();
+	        }
+	        catch (IOException e) {
+	            e.printStackTrace();
+	        } 
+	      	catch (Exception e) {
+	      	}
+	
+	   }
 }

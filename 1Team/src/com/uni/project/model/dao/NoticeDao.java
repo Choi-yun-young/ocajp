@@ -14,7 +14,7 @@ import com.uni.project.model.vo.Notice;
 public class NoticeDao {
 	
 	private ArrayList<Notice> nList = new ArrayList<Notice>();
-	
+	 
 	public NoticeDao() {
 
 		try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("Notice_list.txt"))) {

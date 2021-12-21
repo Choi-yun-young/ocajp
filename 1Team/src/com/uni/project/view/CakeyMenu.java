@@ -3,7 +3,6 @@ package com.uni.project.view;
 import java.util.Scanner;
 
 import com.uni.project.controller.CakeyShopMenuManager;
-import com.uni.project.controller.CustomerBlackList;
 import com.uni.project.model.dao.CustomerManagement;
 
 public class CakeyMenu {
@@ -11,10 +10,9 @@ public class CakeyMenu {
 	private Scanner sc = new Scanner(System.in);
 	private CakeyShopMenuManager cm = new CakeyShopMenuManager(); // 이게 메인
 	private CustomerManagement cm1 = new CustomerManagement();
-	private CustomerBlackList cb = new CustomerBlackList();
 	
 	public void startMenu() {
-		
+		 
 		while (true) {
 			
 			System.out.println("========== Cakey ==========");
@@ -28,6 +26,7 @@ public class CakeyMenu {
 			
 				switch(num1) {
 				case 1: cm1.newCustomer();; break;
+			
 				
 				case 2: 
 					
@@ -64,8 +63,7 @@ public class CakeyMenu {
 				System.out.println("3. 케이크 등록 취소");
 				System.out.println("4. 예약주문 조회");
 				System.out.println("5. 공지사항 조회");
-				System.out.println("6. 블랙리스트 관리");
-				System.out.println("7. 돌아가기");
+				System.out.println("6. 돌아가기");
 				System.out.println("메뉴 입력: ");
 				int menu1 = sc.nextInt();
 				sc.nextLine();
@@ -86,10 +84,7 @@ public class CakeyMenu {
 				case 5:
 					cm.storeNotice(); // 매장용 공지사항조회 추가		
 					break;
-				case 6:
-					cb.manageBlackList(cm1, select);
-					break;
-				case 7 : 
+				case 6 : 
 					return;
 				default:
 					System.out.println("메뉴를 다시 선택하세요");
@@ -117,13 +112,13 @@ public class CakeyMenu {
 				
 				switch (menu2) {
 				case 1:
-					// cm.shopIncakeOrder()??
+					cm.shopIncakeOrder();
 					break;
 				case 2:
-					
+					cm.orderConfirmation();
 					break;
 				case 3:
-					
+					cm.orderCancelCheack();
 					break;
 				case 4:
 					cm.customerNoice(); // 고객용 공지사항 조회 추가
@@ -149,9 +144,8 @@ public class CakeyMenu {
 	        while (true) {
 	
 	          System.out.println("========== 메인 메뉴 ==========");
-	          System.out.println("1. 블랙리스트 관리");
-	          System.out.println("2. 공지사항 관리");
-	          System.out.println("3. 회원정보 조회");
+	          System.out.println("1. 공지사항 관리");
+	          System.out.println("2. 회원정보 조회");
 	          System.out.println("0. 종료하기");
 	          System.out.println("메뉴 입력: ");
 	          int menu3 = sc.nextInt();
@@ -159,12 +153,9 @@ public class CakeyMenu {
 	
 	          switch (menu3) {
 	          case 1:
-	            cb.manageBlackList(cm1, select);
-	            break;
-	          case 2:
 	            NoticeMenu();
 	            break;
-	          case 3:
+	          case 2:
  				cm1.showMemList(); 
  				break;
 	          case 0:

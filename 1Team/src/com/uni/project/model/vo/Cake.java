@@ -6,7 +6,7 @@ public class Cake implements Serializable {
 
 	private static final long serialVersionUID = -777200058529646842L; //객체 입출력용
 	// 직렬화
-
+ 
 	// 상품명, 가격, 재료... 재료 여러개 받기?
 	private int cakeNo;
 
