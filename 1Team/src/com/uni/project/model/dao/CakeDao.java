@@ -15,7 +15,7 @@ public class CakeDao {
 
 	private ArrayList<Cake> ckList = new ArrayList<>();
 	// 케이크 객체만 받는 어레이리스트
-
+ 
 	public CakeDao() {
 
 		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("Cake.txt"))) {

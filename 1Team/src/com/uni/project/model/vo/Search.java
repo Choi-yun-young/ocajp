@@ -10,7 +10,7 @@ public class Search implements Serializable{
 	private String cakeName;
 	private int cakePrice;
 	private String cakeIngred;
-	 
+	  
 	public Search() {}
 	
 	public Search(String cakeName, int cakePrice, String cakeIngred) {

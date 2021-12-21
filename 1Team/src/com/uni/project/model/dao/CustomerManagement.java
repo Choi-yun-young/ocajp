@@ -10,15 +10,13 @@ import com.uni.project.model.vo.Member;
 
 public class CustomerManagement {
 	
-	MemberDAO dao ;
- 
+	MemberDAO dao = new MemberDAO(); //데이터 접근 객체 생성.
+  
 	Scanner sc = new Scanner(System.in);
 	public Map<String, Member> MemberMap = new TreeMap<String, Member>();
 	//회원들의 정보를 저장하는 저장공간
 	public CustomerManagement() {//초기값 설정
 		
-	      dao = new MemberDAO(); //데이터 접근 객체 생성.
-	        
 	}
 	
 	public void newCustomer() {//회원가입
@@ -60,7 +58,8 @@ public class CustomerManagement {
       
         dao.regMem(vo); //입력받은 데이터 추가
         System.out.println("회원등록이 정상적으로 완료되었습니다.");
-        
+        dao.saveFile();
+        dao.showMemList();
        
     }
 	
