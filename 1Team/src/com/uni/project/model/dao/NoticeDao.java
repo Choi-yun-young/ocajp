@@ -86,7 +86,7 @@ public class NoticeDao {
 		setNoticeNo();
 	}
 	
-	private void setNoticeNo() {
+	private void setNoticeNo() { // 삭제시 공지사항 번호 수정됨
 		
 		nList.get(0).setIndex(1);
 		

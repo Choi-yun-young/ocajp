@@ -34,7 +34,7 @@ public class MemberDAO {
 	        Member mem2 = new Member("구름", "구름이", "123456", "123456", "010-0002-7991");
 	        MemberMap.put(mem2.getId(), mem2);  
 	        
-	        
+	         
 	        
 	        
 	        

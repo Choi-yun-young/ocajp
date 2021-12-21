@@ -47,7 +47,7 @@ public class CakeyShopMenuManager {
 				return 1;
 				
 			}
-			if (member.getId().equals(id) /*&& member.getPassword().equals(pwd)*/) {
+			if (member.getId().equals(id) && member.getPassword().equals(pwd)) {
 				System.out.println(member.getId().equals(id));
 				getId = id;
 				return 2;
@@ -162,7 +162,7 @@ public class CakeyShopMenuManager {
 
 	public void reserveList() {
 		// 예약리스트 조회
-		od.oList();
+		System.out.println(od.oList());
 	}
 	
 	

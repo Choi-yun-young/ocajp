@@ -21,7 +21,7 @@ public class CustomerManagement {
 	
 	public void newCustomer() {//회원가입
 	
-	       
+	        
         System.out.println("***********회원가입************");
        
         while(true){

@@ -24,7 +24,7 @@ public class CakeDao {
 				ckList.add((Cake) ois.readObject());
 			}
 
-		} catch (EOFException e) {
+		} catch (EOFException e) { 
 
 		} catch (FileNotFoundException e) {
 
