@@ -22,7 +22,7 @@ public class Member implements Comparable<Member>{
 		this.password1 = password1;
 		this.phoneNum = phone;
 	}
-	
+	 
 	public Member(String id, String name, String phoneNum) {
 		super();
 		this.Id = id;

@@ -20,7 +20,7 @@ public class OrderInformation implements Serializable {
 		this.price = price;
 	}
 
-	
+	 
 	public OrderInformation(int no,String sName, int price, String getId) {
 		this.no = no;
 		this.sName = sName;

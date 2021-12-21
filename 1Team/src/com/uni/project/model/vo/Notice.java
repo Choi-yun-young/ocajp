@@ -22,7 +22,7 @@ public class Notice implements Serializable {
 		this.Contents = contents;
 
 	}
-	
+	 
 	public int getIndex() {
 		return index;
 	}

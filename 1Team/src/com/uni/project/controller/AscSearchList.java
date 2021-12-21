@@ -11,5 +11,5 @@ public class AscSearchList implements Comparator<Search> {
 		
 		return o1.getCakeName().compareTo(o2.getCakeName());
 	}
-
+ 
 }

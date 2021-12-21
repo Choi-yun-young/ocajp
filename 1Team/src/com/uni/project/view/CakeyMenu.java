@@ -104,8 +104,7 @@ public class CakeyMenu {
 				System.out.println("3. 케이크 주문예약취소");
 				System.out.println("4. 공지사항 조회");
 				System.out.println("5. 메뉴 검색");
-				System.out.println("6. 회원 정보 조회");
-				System.out.println("7. 돌아가기");
+				System.out.println("6. 돌아가기");
 				System.out.println("메뉴 입력: ");
 				int menu2 = sc.nextInt();
 				sc.nextLine();
@@ -127,9 +126,6 @@ public class CakeyMenu {
 					searchMenu();
 					break;
 				case 6:
-					
-					break;
-				case 7:
 					return;
 				default:
 					System.out.println("메뉴를 다시 선택하세요");

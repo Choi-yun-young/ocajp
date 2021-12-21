@@ -15,7 +15,7 @@ public class Cake implements Serializable {
 	private String ingred;
 
 	public Cake() {
-
+ 
 	}
 
 	public Cake(int cakeNo, String name, int price, String ingred) {

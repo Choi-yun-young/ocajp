@@ -29,7 +29,7 @@ public class SearchDao {
 	    	 while (true) {
 	        	 searchList.add((Search) ois.readObject());
 	         }
-	
+	 
 	      } catch (EOFException e) {
 	
 	      } catch (FileNotFoundException e) {
